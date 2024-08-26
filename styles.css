@@ -46,10 +46,34 @@ body, html {
 
 #name {
     position: absolute;
-    top: 50%;
+    top: 10px; /* Adjust this value to move it down from the top */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     color: white;
     font-size: 24px;
     z-index: 1;
+    filter: blur(0.5px); /* Add blur effect */
+    padding: 10px; /* Optional: add padding to improve readability */
+    border-radius: 5px; /* Optional: add border radius for rounded corners */
+}
+
+#social-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Adjust space between name and icons */
+    position: absolute; /* Position the icons relative to the container */
+    top: 50px; /* Adjust this value to position the icons */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.social-icon {
+    width: 24px; /* Adjust icon size */
+    height: 24px;
+    margin: 0 10px; /* Adjust spacing between icons */
+}
+
+.social-icon:hover {
+    opacity: 0.7; /* Optional: Add a hover effect */
 }
