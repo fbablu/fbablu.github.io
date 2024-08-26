@@ -88,43 +88,33 @@ animate();
 
 // Drag-and-drop functionality
 const blocks = document.querySelectorAll('.block');
-const grid = document.getElementById('grid');
-const gridRect = grid.getBoundingClientRect();
 
 blocks.forEach(block => {
-    block.addEventListener('click', () => {
-        window.open(block.dataset.url, '_blank');
+    block.addEventListener('mousedown', function(e) {
+        const block = e.target;
+        block.style.zIndex = '10';
+        const shiftX = e.clientX - block.getBoundingClientRect().left;
+        const shiftY = e.clientY - block.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            block.style.left = pageX - shiftX + 'px';
+            block.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        block.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            block.onmouseup = null;
+            block.style.zIndex = '';
+        };
+
+        block.ondragstart = function() {
+            return false;
+        };
     });
-
-    block.addEventListener('dragstart', function(event) {
-        event.dataTransfer.setData('text/plain', event.target.dataset.url);
-    });
-
-    block.addEventListener('dragend', function(event) {
-        event.target.style.position = ''; // Reset position
-        event.target.style.zIndex = '';
-    });
-});
-
-// Grid item interaction
-const blockSize = 150; // The minimum size of the block in the grid
-
-function onDrop(event) {
-    event.preventDefault();
-    const url = event.dataTransfer.getData('text/plain');
-    const draggedElement = [...blocks].find(block => block.dataset.url === url);
-    
-    if (draggedElement) {
-        grid.prepend(draggedElement);
-    }
-}
-
-grid.addEventListener('dragover', function(event) {
-    event.preventDefault(); // Allow drop
-});
-
-grid.addEventListener('drop', onDrop);
-
-blocks.forEach(block => {
-    block.ondragstart = () => false; // Prevent default drag behavior
 });
