@@ -71,3 +71,41 @@ window.addEventListener('mousemove', (e) => {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 animate();
+
+// Grid item interaction
+const blocks = document.querySelectorAll('.block');
+blocks.forEach(block => {
+    block.addEventListener('dblclick', () => {
+        window.open(block.dataset.url, '_blank');
+    });
+});
+
+// Drag-and-drop functionality
+let draggedItem = null;
+
+blocks.forEach(block => {
+    block.addEventListener('mousedown', (e) => {
+        draggedItem = block;
+        block.style.position = 'absolute';
+        block.style.zIndex = 1000;
+        moveAt(e.pageX, e.pageY);
+        
+        function moveAt(pageX, pageY) {
+            block.style.left = pageX - block.offsetWidth / 2 + 'px';
+            block.style.top = pageY - block.offsetHeight / 2 + 'px';
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        block.onmouseup = () => {
+            document.removeEventListener('mousemove', onMouseMove);
+            block.onmouseup = null;
+        };
+    });
+
+    block.ondragstart = () => false;
+});
