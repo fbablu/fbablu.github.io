@@ -1,3 +1,4 @@
+// Particle animation
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let width, height;
@@ -14,15 +15,17 @@ function resizeCanvas() {
 
 function createParticles() {
     particles = [];
-    const particleCount = width * height / 5000; // Increased density of particles
+    const particleCount = width * height / 100; // Adjust the density of particles
     for (let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            radius: Math.random() * 1.5 + 0.5, // Smaller particles
+            radius: Math.random() * 1.5 + 0.1, // Particle size
             originalX: Math.random() * width,
             originalY: Math.random() * height,
-            color: Math.random() > 0.5 ? '#555' : '#000' // Black and grey particles
+            velocityX: Math.random() * 2 - 1, // Random velocity
+            velocityY: Math.random() * 2 - 1, // Random velocity
+            color: Math.random() > 0.5 ? '#555' : '#000' // Particle color
         });
     }
 }
@@ -35,20 +38,31 @@ function drawBackground() {
 function drawParticles() {
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     particles.forEach(particle => {
+        // Move particles based on their velocity
+        particle.x += particle.velocityX;
+        particle.y += particle.velocityY;
+
+        // Bounce off the edges of the canvas
+        if (particle.x < 0 || particle.x > width) {
+            particle.velocityX *= -1;
+        }
+        if (particle.y < 0 || particle.y > height) {
+            particle.velocityY *= -1;
+        }
+
+        // Repel particles from the mouse cursor
         const dx = mouseX - particle.x;
         const dy = mouseY - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 100;
+        const maxDistance = 100; // Distance at which repulsion starts
 
         if (distance < maxDistance) {
             const force = (maxDistance - distance) / maxDistance;
-            particle.x -= dx * force * 0.1; // Increased influence
-            particle.y -= dy * force * 0.1; // Increased influence
-        } else {
-            particle.x += (particle.originalX - particle.x) * 0.1; // Increased return speed
-            particle.y += (particle.originalY - particle.y) * 0.1; // Increased return speed
+            particle.x -= dx * force * 0.1; // Adjust the strength of the repulsion
+            particle.y -= dy * force * 0.1; // Adjust the strength of the repulsion
         }
 
+        // Draw the particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
@@ -72,40 +86,45 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 animate();
 
-// Grid item interaction
+// Drag-and-drop functionality
 const blocks = document.querySelectorAll('.block');
+const grid = document.getElementById('grid');
+const gridRect = grid.getBoundingClientRect();
+
 blocks.forEach(block => {
-    block.addEventListener('dblclick', () => {
+    block.addEventListener('click', () => {
         window.open(block.dataset.url, '_blank');
+    });
+
+    block.addEventListener('dragstart', function(event) {
+        event.dataTransfer.setData('text/plain', event.target.dataset.url);
+    });
+
+    block.addEventListener('dragend', function(event) {
+        event.target.style.position = ''; // Reset position
+        event.target.style.zIndex = '';
     });
 });
 
-// Drag-and-drop functionality
-let draggedItem = null;
+// Grid item interaction
+const blockSize = 150; // The minimum size of the block in the grid
+
+function onDrop(event) {
+    event.preventDefault();
+    const url = event.dataTransfer.getData('text/plain');
+    const draggedElement = [...blocks].find(block => block.dataset.url === url);
+    
+    if (draggedElement) {
+        grid.prepend(draggedElement);
+    }
+}
+
+grid.addEventListener('dragover', function(event) {
+    event.preventDefault(); // Allow drop
+});
+
+grid.addEventListener('drop', onDrop);
 
 blocks.forEach(block => {
-    block.addEventListener('mousedown', (e) => {
-        draggedItem = block;
-        block.style.position = 'absolute';
-        block.style.zIndex = 1000;
-        moveAt(e.pageX, e.pageY);
-        
-        function moveAt(pageX, pageY) {
-            block.style.left = pageX - block.offsetWidth / 2 + 'px';
-            block.style.top = pageY - block.offsetHeight / 2 + 'px';
-        }
-
-        function onMouseMove(e) {
-            moveAt(e.pageX, e.pageY);
-        }
-
-        document.addEventListener('mousemove', onMouseMove);
-
-        block.onmouseup = () => {
-            document.removeEventListener('mousemove', onMouseMove);
-            block.onmouseup = null;
-        };
-    });
-
-    block.ondragstart = () => false;
+    block.ondragstart = () => false; // Prevent default drag behavior
 });
