@@ -1,4 +1,3 @@
-// Particle animation
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let width, height;
@@ -15,7 +14,7 @@ function resizeCanvas() {
 
 function createParticles() {
     particles = [];
-    const particleCount = width * height / 100; // Adjust the density of particles
+    const particleCount = width * height / 100; // density of particles
     for (let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * width,
@@ -23,15 +22,15 @@ function createParticles() {
             radius: Math.random() * 1.5 + 0.1, // Particle size
             originalX: Math.random() * width,
             originalY: Math.random() * height,
-            velocityX: Math.random() * 2 - 1, // Random velocity
-            velocityY: Math.random() * 2 - 1, // Random velocity
-            color: Math.random() > 0.5 ? '#555' : '#000' // Particle color
+            velocityX: Math.random() * 2 - 1, 
+            velocityY: Math.random() * 2 - 1,
+            color: Math.random() > 0.5 ? '#555' : '#000' // Particle colors
         });
     }
 }
 
 function drawBackground() {
-    ctx.fillStyle = '#333'; // Dark grey background
+    ctx.fillStyle = '#333'; 
     ctx.fillRect(0, 0, width, height);
 }
 
@@ -151,20 +150,26 @@ blocks.forEach(block => {
 });
 
 positionBlocks();
-
-// Clean Up button functionality
 const cleanUpButton = document.getElementById('cleanUpButton');
 
 cleanUpButton.addEventListener('click', function() {
+    blocks.forEach(block => block.classList.add('transition'));
+    
     cleanUpBlocks();
+
+    // Remove the transition class after the transition ends
+    setTimeout(() => {
+        blocks.forEach(block => block.classList.remove('transition'));
+    }, 500);
 });
+
 function cleanUpBlocks() {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
 
-    const blockWidth = 150; // The fixed width of the blocks
-    const blockHeight = 150; // The fixed height of the blocks
-    const margin = 50; // Margin between blocks
+    const blockWidth = 150;
+    const blockHeight = 150; 
+    const margin = 50;
 
     const totalBlocks = blocks.length;
 
@@ -188,7 +193,7 @@ function cleanUpBlocks() {
         const x = startX + col * (blockWidth + margin);
         const y = startY + row * (blockHeight + margin);
 
-        block.style.position = 'absolute'; // Ensure absolute positioning
+        block.style.position = 'absolute'; 
         block.style.left = `${x}px`;
         block.style.top = `${y}px`;
     });
