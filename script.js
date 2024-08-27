@@ -158,23 +158,25 @@ const cleanUpButton = document.getElementById('cleanUpButton');
 cleanUpButton.addEventListener('click', function() {
     cleanUpBlocks();
 });
-
 function cleanUpBlocks() {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
 
     const blockWidth = 150; // The fixed width of the blocks
     const blockHeight = 150; // The fixed height of the blocks
-    const margin = 20; // Margin between blocks
+    const margin = 50; // Margin between blocks
 
-    // Calculate the number of blocks that fit horizontally and vertically
-    const blocksPerRow = Math.floor(containerWidth / (blockWidth + margin));
-    const rows = Math.ceil(blocks.length / blocksPerRow);
+    const totalBlocks = blocks.length;
+
+    // Calculate the number of blocks that fit in a square grid
+    const blocksPerRow = Math.floor(Math.sqrt(totalBlocks));
+    const rows = Math.ceil(totalBlocks / blocksPerRow);
+
+    // Calculate the total grid width and height including margins
+    const totalGridWidth = blocksPerRow * blockWidth + (blocksPerRow - 1) * margin;
+    const totalGridHeight = rows * blockHeight + (rows - 1) * margin;
 
     // Center the grid based on available space
-    const totalGridWidth = blocksPerRow * (blockWidth + margin) - margin;
-    const totalGridHeight = rows * (blockHeight + margin) - margin;
-
     const startX = (containerWidth - totalGridWidth) / 2;
     const startY = (containerHeight - totalGridHeight) / 2;
 
@@ -186,6 +188,7 @@ function cleanUpBlocks() {
         const x = startX + col * (blockWidth + margin);
         const y = startY + row * (blockHeight + margin);
 
+        block.style.position = 'absolute'; // Ensure absolute positioning
         block.style.left = `${x}px`;
         block.style.top = `${y}px`;
     });
