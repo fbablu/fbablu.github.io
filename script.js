@@ -88,9 +88,32 @@ animate();
 
 // Drag-and-drop functionality
 const blocks = document.querySelectorAll('.block');
+let isDragging = false;
+
+// Function to position blocks randomly on page load
+function positionBlocks() {
+    blocks.forEach(block => {
+        const top = Math.random() * (window.innerHeight - block.offsetHeight);
+        const left = Math.random() * (window.innerWidth - block.offsetWidth);
+        block.style.position = 'absolute';
+        block.style.top = `${top}px`;
+        block.style.left = `${left}px`;
+        block.style.transform = 'translateX(0)';
+        block.style.color = 'white';
+        block.style.fontSize = '24px';
+        block.style.zIndex = '1';
+        block.style.filter = 'blur(0.5px)';
+        block.style.padding = '10px';
+        block.style.borderRadius = '5px';
+    });
+}
+
+// Initialize block positioning
+positionBlocks();
 
 blocks.forEach(block => {
     block.addEventListener('mousedown', function(e) {
+        isDragging = true;
         const block = e.target;
         block.style.zIndex = '10';
         const shiftX = e.clientX - block.getBoundingClientRect().left;
@@ -111,10 +134,18 @@ blocks.forEach(block => {
             document.removeEventListener('mousemove', onMouseMove);
             block.onmouseup = null;
             block.style.zIndex = '';
+            isDragging = false; // Reset dragging flag
         };
 
         block.ondragstart = function() {
             return false;
         };
+    });
+
+    // Click functionality to navigate to a project
+    block.addEventListener('dblclick', function(e) {
+        if (!isDragging) {
+            window.open(block.dataset.url, '_blank');
+        }
     });
 });
