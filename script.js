@@ -149,3 +149,44 @@ blocks.forEach(block => {
         }
     });
 });
+
+positionBlocks();
+
+// Clean Up button functionality
+const cleanUpButton = document.getElementById('cleanUpButton');
+
+cleanUpButton.addEventListener('click', function() {
+    cleanUpBlocks();
+});
+
+function cleanUpBlocks() {
+    const containerWidth = window.innerWidth;
+    const containerHeight = window.innerHeight;
+
+    const blockWidth = 150; // The fixed width of the blocks
+    const blockHeight = 150; // The fixed height of the blocks
+    const margin = 20; // Margin between blocks
+
+    // Calculate the number of blocks that fit horizontally and vertically
+    const blocksPerRow = Math.floor(containerWidth / (blockWidth + margin));
+    const rows = Math.ceil(blocks.length / blocksPerRow);
+
+    // Center the grid based on available space
+    const totalGridWidth = blocksPerRow * (blockWidth + margin) - margin;
+    const totalGridHeight = rows * (blockHeight + margin) - margin;
+
+    const startX = (containerWidth - totalGridWidth) / 2;
+    const startY = (containerHeight - totalGridHeight) / 2;
+
+    // Position the blocks in a grid layout
+    blocks.forEach((block, index) => {
+        const row = Math.floor(index / blocksPerRow);
+        const col = index % blocksPerRow;
+
+        const x = startX + col * (blockWidth + margin);
+        const y = startY + row * (blockHeight + margin);
+
+        block.style.left = `${x}px`;
+        block.style.top = `${y}px`;
+    });
+}

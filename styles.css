@@ -91,3 +91,72 @@ body, html {
 .social-icon:hover {
     opacity: 0.7; /* Optional: Add a hover effect */
 }
+
+/* Add this styling for the Clean Up button */
+#cleanUpButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    font-family: Times New Roman, serif;
+
+}
+
+#cleanUpButton:hover {
+    background-color: #666;
+}
+
+/* Existing CSS code */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #333;
+    font-family: Times New Roman, serif;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.block {
+    background-color: #444;
+    color: white;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    pointer-events: auto;
+}
+
+.block:hover {
+    background-color: #555;
+}
