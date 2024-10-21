@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     cursor.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35">
-            <circle cx="17.5" cy="17.5" r="14.5" fill="none" stroke="#fff" stroke-width="1.5"/>
-            <circle cx="17.5" cy="17.5" r="3" fill="#fff"/>
-        </svg>
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+    <circle cx="12.5" cy="12.5" r="10" fill="none" stroke="#ffcc00" stroke-width="1.5"/>
+    <circle cx="12.5" cy="12.5" r="2" fill="#fff"/>
+</svg>
+
     `;
     document.body.appendChild(cursor);
 
