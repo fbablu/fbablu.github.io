@@ -75,14 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
         drawBreathingCircle();
         for (let i = 0; i < waveCount; i++) {
             const yOffset = (i - Math.floor(waveCount / 2)) * (canvas.height / waveCount);
-            const amplitudeModifier = Math.sin(time + i) * 0.5 + 1.5; // Breathing effect for waves
+            const amplitudeModifier = Math.sin(time + i) * 0.5 + 1.5; // breathing effect 
             drawWave(yOffset, amplitudeModifier);
         }
 
         // Smooth mouse movement with faster easing
-        mouseX += (targetX - mouseX); // Quick response for x-axis
-        mouseY += (targetY - mouseY); // Quick response for y-axis
-
+        mouseX += (targetX - mouseX); 
+        mouseY += (targetY - mouseY); 
         // Update custom cursor position
         cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
 
@@ -96,11 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners for window resize and mouse movement
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', (e) => {
-        targetX = e.clientX; // Set target x position
-        targetY = e.clientY; // Set target y position
+        targetX = e.clientX;
+        targetY = e.clientY;
     });
 
-    // Initial setup
-    resizeCanvas(); // Resize canvas on load
-    draw(); // Start drawing
+
+    resizeCanvas();
+    draw(); 
 });
