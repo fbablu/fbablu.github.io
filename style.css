@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Josefin+Sans&family=IBM+Plex+Mono:ital@1&family=Aboreto&family=Ubuntu+Condensed&family=Akronim&family=Bungee+Inline&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&family=Josefin+Sans&family=IBM+Plex+Mono:ital@1&family=Aboreto&family=Ubuntu+Condensed&family=Akronim&family=Bungee+Inline&display=swap");
 
 /* Reset and base styles */
 * {
@@ -91,6 +91,14 @@ h1 {
   text-decoration-line: underline;
 }
 
+.regular {
+  color: #000;
+  font-family: Times;
+  font-size: clamp(28px, 5vw, 40px);
+  font-style: normal;
+  font-weight: 400;
+}
+
 .junior-regular {
   color: #000;
   font-family: Times;
@@ -155,13 +163,12 @@ h1 {
   letter-spacing: -2px;
 }
 
-.regular, .comma {
+.regular,
+.comma {
   color: #000;
   font-family: Times;
   font-size: clamp(28px, 5vw, 40px);
 }
-
-/* Add these menu styles to your existing CSS */
 
 /* Menu Styles */
 .menu-trigger {
@@ -215,6 +222,67 @@ h1 {
   background-color: #f5f5f5;
 }
 
+/* Projects Grid Styles */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  display: block;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
+
+.project-title {
+  font-family: Times;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  font-family: Times;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tools span {
+  font-family: "Courier New";
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -226,17 +294,16 @@ h1 {
   }
 }
 
-
 /* Media Queries */
 @media (max-width: 480px) {
   .container {
     padding: 0.5rem;
   }
-  
+
   .content {
     gap: 1.5rem;
   }
-  
+
   .section {
     gap: 0.5rem;
   }
