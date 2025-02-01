@@ -1,43 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fardeen Bablu | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <canvas id="kaleidoscopeCanvas"></canvas>
-    <main>
-        <h1>Fardeen Bablu</h1>
-        <h2>CS + Math + Medicine Health and Society @ Vanderbilt University</h2>
-        
-        <div id="grid">
-            <a href="https://github.com/fbablu/ios-intranet" target="_blank" class="block">
-                <span>iOS Intranet App</span>
-            </a>
-            <a href="https://github.com/fbablu/QuizLITE" target="_blank" class="block">
-                <span>QuizLITE</span>
-            </a>
-            <a href="https://github.com/fbablu/drug-analysis" target="_blank" class="block">
-                <span>Online Drug Review Analysis</span>
-            </a>
-            <a href="https://www.figma.com/design/0tg9oPleooDwh77Umsj7F5/NPForward-Mockup?node-id=0-1&t=LbZ3jl8ltMUfFHfA-0" target="_blank" class="block">
-                <span>Accenture Innovation Challenge Finalist</span>
-            </a>
+    <title>fardeen bablu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button class="menu-trigger" aria-label="Open menu"></button>
+    <div class="menu-popup">
+      <a
+        href="https://linkedin.com/in/fardeenbablu"
+        target="_blank"
+        rel="noopener noreferrer"
+        >LinkedIn</a
+      >
+      <a
+        href="https://github.com/fardeenbablu"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub</a
+      >
+      <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+
+    <div class="container">
+      <h1>fardeen bablu</h1>
+
+      <div class="content">
+        <!-- University line -->
+        <div class="section university-line">
+          <span class="junior">junior</span>
+          <span class="regular">@ Vanderbilt University</span>
         </div>
-        <div id="social-media">
-            <a href="https://github.com/fbablu" target="_blank" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/fbablu/" target="_blank" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-            <a href="https://drive.google.com/file/d/1Fcj0HeuR7dcb_CxApViG7LU_2qftUVpw/view?usp=sharing" target="_blank" aria-label="Resume">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </a>
+
+        <!-- Majoring section -->
+        <div class="section majoring-section">
+          <p class="junior">majoring in</p>
+          <div class="tight-text">
+            <p class="comp-sci">computer science,</p>
+            <p class="math">mathematics,</p>
+            <p class="public-health">public health</p>
+          </div>
         </div>
-    </main>
+
+        <!-- Love solving section -->
+        <div class="section">
+          <p class="junior">i love solving problems,</p>
+          <p class="inline-text">
+            <span class="developing">developing</span>
+            <span class="comma">, </span> 
+            <span class="breaking">BREAKING</span
+          ><span class="comma">, </span> <span class="coding">coding</span
+            ><span class="comma">, </span>
+            <span class="designing">designing</span
+            ><span class="comma">, </span>
+            <span class="presenting">PRESENTING</span
+            ><span class="comma">, </span>
+            <span class="regular">along the way.</span>
+          </p>
+        </div>
+
+        <!-- Projects section -->
+        <div class="section">
+          <p class="junior">projects include</p>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

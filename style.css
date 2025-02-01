@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Josefin+Sans&family=IBM+Plex+Mono:ital@1&family=Aboreto&family=Ubuntu+Condensed&family=Akronim&family=Bungee+Inline&display=swap');
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 388px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Typography base styles */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Space between sections */
+}
+
+h1 {
+  color: #000;
+  font-family: Times;
+  font-size: clamp(40px, 8vw, 60px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -4.8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Section styles */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Tight text within sections */
+.tight-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tight-text p {
+  line-height: 0.9;
+  margin-bottom: 0.5rem; /* Negative margin to bring lines closer */
+}
+
+/* Inline text styles */
+.inline-text {
+  display: inline;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+.inline-text span {
+  display: inline;
+}
+
+/* University line styles */
+.university-line {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: center;
+}
+
+/* Typography styles */
+.junior {
+  color: #000;
+  font-family: Times;
+  font-size: clamp(28px, 5vw, 40px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -2px;
+  text-decoration-line: underline;
+}
+
+.junior-regular {
+  color: #000;
+  font-family: Times;
+  font-size: clamp(28px, 5vw, 40px);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.comp-sci {
+  color: #000;
+  font-family: "Courier New";
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -4.5px;
+}
+
+.math {
+  color: #000;
+  font-family: Alegreya;
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -2px;
+}
+
+.public-health {
+  color: #000;
+  font-family: "Josefin Sans";
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -4px;
+}
+
+.developing {
+  color: #000;
+  font-family: "IBM Plex Mono";
+  font-size: clamp(28px, 5vw, 40px);
+  font-style: italic;
+  letter-spacing: -2px;
+}
+
+.breaking {
+  color: #000;
+  font-family: Aboreto;
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -2px;
+}
+
+.coding {
+  color: #000;
+  font-family: "Ubuntu Condensed";
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -2px;
+}
+
+.designing {
+  color: #000;
+  font-family: Akronim;
+  font-size: clamp(28px, 5vw, 40px);
+}
+
+.presenting {
+  color: #000;
+  font-family: "Bungee Inline";
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -2px;
+}
+
+.regular, .comma {
+  color: #000;
+  font-family: Times;
+  font-size: clamp(28px, 5vw, 40px);
+}
+
+/* Add these menu styles to your existing CSS */
+
+/* Menu Styles */
+.menu-trigger {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.2s;
+}
+
+.menu-trigger:hover {
+  opacity: 0.8;
+}
+
+.menu-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 999;
+}
+
+.menu-popup.active {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.menu-popup a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: black;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  font-family: Times;
+  font-size: 1rem;
+}
+
+.menu-popup a:hover {
+  background-color: #f5f5f5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Media Queries */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .content {
+    gap: 1.5rem;
+  }
+  
+  .section {
+    gap: 0.5rem;
+  }
+}
