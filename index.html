@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -87,25 +87,27 @@
 
       <div class="content">
         <!-- University line -->
-        <div class="flex justify-center items-baseline whitespace-nowrap">
+        <div class="flex university-line">
           <span class="junior">junior</span>
-          <span class="regular ml-2">@ Vanderbilt University</span>
+          <span class="regular" style="margin-left: 8px"
+            >@ Vanderbilt University</span
+          >
         </div>
 
-        <!-- Majoring section -->
+        <!-- Majoring section - inline version -->
         <div class="section majoring-section">
-          <p class="junior">majoring in</p>
-          <div class="tight-text">
-            <p class="comp-sci">computer science,</p>
-            <p class="math">mathematics,</p>
-            <p class="public-health">and public health</p>
+          <div class="major-line">
+            <span class="junior">majoring in</span>
+            <span class="comp-sci">computer science,</span>
+            <span class="math">mathematics,</span>
+            <span class="public-health">and public health</span>
           </div>
         </div>
 
-        <!-- Love solving section -->
+        <!-- Love solving section - inline version -->
         <div class="section">
-          <p class="junior">i love solving problems,</p>
-          <p class="inline-text">
+          <div class="solving-line">
+            <span class="junior">i love solving problems,</span>
             <span class="developing">developing</span>
             <span class="comma">, </span>
             <span class="breaking">BREAKING</span><span class="comma">, </span>
@@ -115,9 +117,66 @@
             <span class="presenting">PRESENTING</span
             ><span class="comma">, </span>
             <span class="regular">along the way.</span>
-          </p>
+          </div>
         </div>
 
+        <!-- NEW Skills Section -->
+        <div class="section skills-section">
+          <p class="junior">skills</p>
+
+          <div class="skills-grid">
+            <!-- Coding Skills -->
+            <div class="skill-category">
+              <h3>Coding</h3>
+              <div class="skill-tags">
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>TypeScript</span>
+                <span>React</span>
+                <span>Node.js</span>
+                <span>C/C++</span>
+                <span>STL</span>
+                <span>Qt</span>
+                <span>R</span>
+                <span>SQL</span>
+                <span>SQLite</span>
+              </div>
+            </div>
+
+            <!-- Tools Skills -->
+            <div class="skill-category">
+              <h3>Tools</h3>
+              <div class="skill-tags">
+                <span>Git</span>
+                <span>GitHub Actions</span>
+                <span>CI/CD</span>
+                <span>VS Code</span>
+                <span>IntelliJ</span>
+                <span>CLion</span>
+                <span>Jupyter</span>
+                <span>Figma</span>
+              </div>
+            </div>
+
+            <!-- Tech & Languages Skills -->
+            <div class="skill-category">
+              <h3>Tech & Languages</h3>
+              <div class="skill-tags">
+                <span>macOS</span>
+                <span>Windows</span>
+                <span>Microsoft Office</span>
+                <span>Google Workspace</span>
+                <span>PowerBI</span>
+                <span>Tableau</span>
+                <span>English</span>
+                <span>Bengali</span>
+                <span>Spanish</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
         <div class="section projects-section">
           <p class="junior">projects</p>
 

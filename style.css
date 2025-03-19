@@ -13,11 +13,12 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  background-color: #ffffff;
 }
 
 .container {
   width: 100%;
-  max-width: 388px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -26,18 +27,18 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Space between sections */
+  gap: 1.5rem;
 }
 
 h1 {
   color: #000;
   font-family: Times;
-  font-size: clamp(40px, 8vw, 60px);
+  font-size: clamp(32px, 6vw, 48px);
   font-style: normal;
   font-weight: 400;
   line-height: 1;
-  letter-spacing: -4.8px;
-  margin-bottom: 2rem;
+  letter-spacing: -3px;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
@@ -45,7 +46,8 @@ h1 {
 .section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Tight text within sections */
@@ -57,7 +59,26 @@ h1 {
 
 .tight-text p {
   line-height: 0.9;
-  margin-bottom: 0.5rem; /* Negative margin to bring lines closer */
+  margin-bottom: 0.25rem;
+}
+
+/* Major line styles for inline display */
+.major-line,
+.solving-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.major-line span,
+.solving-line span {
+  display: inline-block;
+}
+
+.solving-line .comma {
+  margin-left: -0.25rem;
+  margin-right: 0.25rem;
 }
 
 /* Inline text styles */
@@ -84,17 +105,17 @@ h1 {
 .junior {
   color: #000;
   font-family: Times;
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
   font-style: normal;
   font-weight: 700;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px; /* Reduced from -2px */
   text-decoration-line: underline;
 }
 
 .regular {
   color: #000;
   font-family: Times;
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
   font-style: normal;
   font-weight: 400;
 }
@@ -102,7 +123,7 @@ h1 {
 .junior-regular {
   color: #000;
   font-family: Times;
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
   font-style: normal;
   font-weight: 700;
 }
@@ -110,80 +131,124 @@ h1 {
 .comp-sci {
   color: #000;
   font-family: "Courier New";
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -4.5px;
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  letter-spacing: -3px; /* Reduced from -4.5px */
 }
 
 .math {
   color: #000;
   font-family: Alegreya;
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -2px;
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  letter-spacing: -1.5px; /* Reduced from -2px */
 }
 
 .public-health {
   color: #000;
   font-family: "Josefin Sans";
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -4px;
+  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  letter-spacing: -2.5px;
 }
 
 .developing {
   color: #000;
   font-family: "IBM Plex Mono";
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px);
   font-style: italic;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px;
 }
 
 .breaking {
   color: #000;
   font-family: Aboreto;
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -2px;
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: -1.5px;
 }
 
 .coding {
   color: #000;
   font-family: "Ubuntu Condensed";
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -2px;
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: -1.5px;
 }
 
 .designing {
   color: #000;
   font-family: Akronim;
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px);
 }
 
 .presenting {
   color: #000;
   font-family: "Bungee Inline";
-  font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -2px;
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: -1.5px;
 }
 
 .regular,
 .comma {
   color: #000;
   font-family: Times;
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(20px, 4vw, 28px);
 }
-
 
 /* Projects Grid Styles */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   width: 100%;
+}
+
+/* Skills Section Styles */
+.skills-section {
+  margin-top: 0.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.skill-category {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e5e5e5;
+}
+
+.skill-category h3 {
+  font-family: Times;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tags span {
+  font-family: "Courier New";
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #f0f0f0;
+  border-radius: 16px;
+  transition: background-color 0.2s;
+}
+
+.skill-tags span:hover {
+  background-color: #e0e0e0;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin: -1rem 0 2rem 0;
+  margin: -1rem 0 1.5rem 0;
 }
 
 .social-link {
@@ -198,12 +263,14 @@ h1 {
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1.25rem;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .project-card:hover {
@@ -212,9 +279,9 @@ h1 {
 }
 
 .project-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 1rem;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0.75rem;
   display: block;
   mix-blend-mode: multiply;
   object-fit: contain;
@@ -222,15 +289,15 @@ h1 {
 
 .project-title {
   font-family: Times;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-bottom: 0.5rem;
 }
 
 .project-desc {
   font-family: Times;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   flex-grow: 1;
 }
 
@@ -242,7 +309,7 @@ h1 {
 
 .tools span {
   font-family: "Courier New";
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   padding: 0.25rem 0.75rem;
   background-color: #f5f5f5;
   border-radius: 16px;
@@ -259,17 +326,53 @@ h1 {
   }
 }
 
+/* Animations */
+.section,
+.project-card,
+.skill-category {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
 /* Media Queries */
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container {
+    max-width: 1000px;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0.5rem;
   }
 
   .content {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .section {
-    gap: 0.5rem;
+    gap: 0.25rem;
+  }
+
+  h1 {
+    font-size: 30px;
+    letter-spacing: -2px;
   }
 }
