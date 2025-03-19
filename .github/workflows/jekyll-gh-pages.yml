@@ -38,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
       - name: Cache
-        uses: actions/cache@v4.1.2
+        uses: actions/cache@v4
         with:
           path: ./_site
           key: ${{ runner.os }}-jekyll-${{ hashFiles('**/*') }}
