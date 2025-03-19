@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=Josefin+Sans&family=IBM+Plex+Mono:ital@1&family=Aboreto&family=Ubuntu+Condensed&family=Akronim&family=Bungee+Inline&display=swap");
 
-/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +22,6 @@ body {
   padding: 1rem;
 }
 
-/* Typography base styles */
 .content {
   display: flex;
   flex-direction: column;
@@ -42,7 +40,6 @@ h1 {
   text-align: center;
 }
 
-/* Section styles */
 .section {
   display: flex;
   flex-direction: column;
@@ -50,7 +47,6 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-/* Tight text within sections */
 .tight-text {
   display: flex;
   flex-direction: column;
@@ -62,7 +58,6 @@ h1 {
   margin-bottom: 0.25rem;
 }
 
-/* Major line styles for inline display */
 .major-line,
 .solving-line {
   display: flex;
@@ -81,7 +76,6 @@ h1 {
   margin-right: 0.25rem;
 }
 
-/* Inline text styles */
 .inline-text {
   display: inline;
   line-height: 1.1;
@@ -92,7 +86,6 @@ h1 {
   display: inline;
 }
 
-/* University line styles */
 .university-line {
   display: flex;
   flex-direction: row;
@@ -101,21 +94,20 @@ h1 {
   justify-content: center;
 }
 
-/* Typography styles */
 .junior {
   color: #000;
   font-family: Times;
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  font-size: clamp(20px, 4vw, 28px);
   font-style: normal;
   font-weight: 700;
-  letter-spacing: -1.5px; /* Reduced from -2px */
+  letter-spacing: -1.5px;
   text-decoration-line: underline;
 }
 
 .regular {
   color: #000;
   font-family: Times;
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  font-size: clamp(20px, 4vw, 28px);
   font-style: normal;
   font-weight: 400;
 }
@@ -123,7 +115,7 @@ h1 {
 .junior-regular {
   color: #000;
   font-family: Times;
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  font-size: clamp(20px, 4vw, 28px);
   font-style: normal;
   font-weight: 700;
 }
@@ -131,21 +123,21 @@ h1 {
 .comp-sci {
   color: #000;
   font-family: "Courier New";
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
-  letter-spacing: -3px; /* Reduced from -4.5px */
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: -3px;
 }
 
 .math {
   color: #000;
   font-family: Alegreya;
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
-  letter-spacing: -1.5px; /* Reduced from -2px */
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: -1.5px;
 }
 
 .public-health {
   color: #000;
   font-family: "Josefin Sans";
-  font-size: clamp(20px, 4vw, 28px); /* Reduced from clamp(28px, 5vw, 40px) */
+  font-size: clamp(20px, 4vw, 28px);
   letter-spacing: -2.5px;
 }
 
@@ -191,7 +183,6 @@ h1 {
   font-size: clamp(20px, 4vw, 28px);
 }
 
-/* Projects Grid Styles */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -199,7 +190,6 @@ h1 {
   width: 100%;
 }
 
-/* Skills Section Styles */
 .skills-section {
   margin-top: 0.5rem;
 }
@@ -307,6 +297,12 @@ h1 {
   gap: 0.5rem;
 }
 
+.section:not(:last-child) {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .tools span {
   font-family: "Courier New";
   font-size: 0.8rem;
@@ -326,19 +322,16 @@ h1 {
   }
 }
 
-/* Animations */
 .section,
 .project-card,
 .skill-category {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Media Queries */
 @media (min-width: 768px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -348,31 +341,10 @@ h1 {
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
   .container {
     max-width: 1000px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0.5rem;
-  }
-
-  .content {
-    gap: 1rem;
-  }
-
-  .section {
-    gap: 0.25rem;
-  }
-
-  h1 {
-    font-size: 30px;
-    letter-spacing: -2px;
   }
 }
