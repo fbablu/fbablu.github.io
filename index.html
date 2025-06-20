@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fardeen bablu</title>
     <link rel="stylesheet" href="style.css" />
-
     <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32"/>
   </head>
@@ -14,7 +13,7 @@
       <h1>fardeen bablu</h1>
 
       <div class="social-links">
-        <a
+        
           href="https://www.linkedin.com/in/fbablu"
           target="_blank"
           rel="noopener noreferrer"
@@ -38,7 +37,7 @@
             <circle cx="4" cy="4" r="2" />
           </svg>
         </a>
-        <a
+        
           href="https://github.com/fbablu/"
           target="_blank"
           rel="noopener noreferrer"
@@ -60,7 +59,7 @@
             />
           </svg>
         </a>
-        <a
+        
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
@@ -123,7 +122,40 @@
           </div>
         </div>
 
-        <!-- NEW Skills Section -->
+        <!-- Featured Projects Section -->
+        <div class="section featured-section">
+          <p class="junior">what i'm working on</p>
+          
+          <div class="featured-container">
+            <div class="featured-projects" id="featured-projects">
+              <div class="featured-project" data-project="spevents">
+                <div class="project-model" id="model-spevents"></div>
+                <h3>Spevents</h3>
+                <p>Real-time 3D photo gallery</p>
+              </div>
+              
+              <div class="featured-project" data-project="spark">
+                <div class="project-model" id="model-spark"></div>
+                <h3>Spark iOS</h3>
+                <p>Native iOS intranet app</p>
+              </div>
+              
+              <div class="featured-project" data-project="quizlite">
+                <div class="project-model" id="model-quizlite"></div>
+                <h3>QuizLITE</h3>
+                <p>Adaptive flashcard application</p>
+              </div>
+              
+              <div class="featured-project" data-project="ezdoordecs">
+                <div class="project-model" id="model-ezdoordecs"></div>
+                <h3>ezDoorDecs</h3>
+                <p>Door decoration generator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
         <div class="section skills-section">
           <p class="junior">skills</p>
 
@@ -181,7 +213,7 @@
 
         <!-- Projects Section -->
         <div class="section projects-section">
-          <p class="junior">projects</p>
+          <p class="junior">all projects</p>
 
           <div class="projects-grid">
             <!-- Spevents -->
@@ -203,7 +235,7 @@
             </a>
 
             <!-- Spark iOS -->
-            <a
+            
               href="https://github.com/fbablu/Spark-iOS-Intranet"
               class="project-card"
             >
@@ -224,7 +256,7 @@
             </a>
 
             <!-- QuizLITE -->
-            <a
+            
               href="https://github.com/aditya-shrey/QuizLITE"
               class="project-card"
             >
@@ -277,7 +309,7 @@
             </a>
 
             <!-- Healthcare Network Analysis -->
-            <a
+            
               href="https://github.com/fbablu/cs3891-network-project"
               class="project-card"
             >
@@ -294,7 +326,7 @@
             </a>
 
             <!-- Drug Review Analysis -->
-            <a
+            
               href="https://github.com/fbablu/drug-analysis"
               class="project-card"
             >
@@ -312,7 +344,7 @@
             <!-- VABS Website -->
             <a href="https://vabsvu.github.io" class="project-card">
               <h3 class="project-title">VABS Website</h3>
-              <p class="project-desc">
+            <p class="project-desc">
                 Interactive website for Vanderbilt Association of Bengali
                 Students
               </p>
@@ -326,5 +358,8 @@
         </div>
       </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="featured-projects.js"></script>
   </body>
 </html>

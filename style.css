@@ -348,3 +348,134 @@ h1 {
     max-width: 1000px;
   }
 }
+
+/* Featured Projects Section */
+.featured-section {
+  margin: 3rem 0;
+}
+
+.featured-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  position: relative;
+}
+
+.featured-projects {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 2rem auto;
+}
+
+.featured-project {
+  position: absolute;
+  width: 120px;
+  height: 140px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  z-index: 1;
+}
+
+.featured-project:hover {
+  transform: scale(1.1);
+}
+
+.featured-project h3 {
+  font-family: Times;
+  font-size: 1rem;
+  margin: 0.5rem 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.featured-project p {
+  font-family: Times;
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+.project-model {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 0.5rem;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+/* Position each project around the circle */
+.featured-project:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.featured-project:nth-child(2) {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.featured-project:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.featured-project:nth-child(4) {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* Page transition styles */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (max-width: 768px) {
+  .featured-projects {
+    width: 300px;
+    height: 300px;
+  }
+
+  .featured-project {
+    width: 100px;
+    height: 100px;
+  }
+
+  .project-model {
+    width: 60px;
+    height: 60px;
+  }
+
+  .featured-project h3 {
+    font-size: 0.9rem;
+  }
+
+  .featured-project p {
+    font-size: 0.7rem;
+  }
+}
+
+.project-model canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
