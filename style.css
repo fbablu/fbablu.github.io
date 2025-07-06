@@ -101,7 +101,6 @@ h1 {
   font-style: normal;
   font-weight: 700;
   letter-spacing: -1.5px;
-  text-decoration-line: underline;
 }
 
 .regular {
@@ -258,9 +257,7 @@ h1 {
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .project-card:hover {
