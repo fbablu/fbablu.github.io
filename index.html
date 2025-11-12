@@ -1,406 +1,494 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fardeen bablu</title>
-    <link rel="stylesheet" href="style.css" />
-<<<<<<< Updated upstream
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32"/>
-=======
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FB • Ocean Flow Waves</title>
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
->>>>>>> Stashed changes
+    <!--
+      Lineage / Credit
+      - Core noise & pattern inspiration: Liam Egan (2018)
+      - Recomposition, flow‑advected Gaussian noise, Ocean palette (deep blues→teal→turquoise→foam),
+        mouse-driven warping, HUD & controls: Fardeen Bablu (2025)
+      - Engine: Three.js r88 (kept to match original)
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #000;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+      #container {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        cursor: crosshair;
+      }
+      .hud {
+        position: fixed;
+        left: 12px;
+        bottom: 12px;
+        color: #e8e8e8;
+        font-size: 12px;
+        opacity: 0.9;
+        user-select: none;
+        line-height: 1.35;
+        background: rgba(0, 0, 0, 0.45);
+        padding: 8px 10px;
+        border-radius: 6px;
+        letter-spacing: 0.2px;
+        max-width: 520px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      }
+      .hud b {
+        color: #fff;
+      }
+      .hud code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1px 4px;
+        border-radius: 4px;
+      }
+      .status {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 700;
+      }
+      .ok {
+        background: #0a3;
+      }
+      .credit {
+        opacity: 0.8;
+        margin-top: 6px;
+      }
+
+      /* Parameter display box - top right */
+      .params {
+        position: fixed;
+        right: 12px;
+        top: 12px;
+        color: #e8e8e8;
+        font-size: 11px;
+        opacity: 0.9;
+        user-select: none;
+        line-height: 1.5;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 12px;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        min-width: 200px;
+      }
+      .params .title {
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+        font-size: 12px;
+      }
+      .params .param {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px 0;
+      }
+      .params .param .name {
+        color: #aaa;
+      }
+      .params .param .value {
+        color: #4fc3f7;
+        font-weight: 600;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <h1>fardeen bablu</h1>
+    <div id="container"></div>
 
-      <div class="social-links">
-        
-          href="https://www.linkedin.com/in/fbablu"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-            />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-        
-          href="https://github.com/fbablu/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-            />
-          </svg>
-        </a>
-        
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-            />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10 9 9 9 8 9" />
-          </svg>
-        </a>
+    <!-- Bottom left: controls -->
+    <div class="hud" id="hud">
+      <div>
+        <span class="status ok" id="status">OK</span> Ocean Flow Waves — Deep
+        Blues → Teal → Turquoise → Foam
       </div>
-
-      <div class="content">
-        <!-- University line -->
-        <div class="flex university-line">
-          <span class="junior">junior</span>
-          <span class="regular" style="margin-left: 8px"
-            >@ Vanderbilt University</span
-          >
-        </div>
-
-        <!-- Majoring section - inline version -->
-        <div class="section majoring-section">
-          <div class="major-line">
-            <span class="junior">majoring in</span>
-            <span class="comp-sci">computer science,</span>
-            <span class="math">mathematics,</span>
-            <span class="public-health">and public health</span>
-          </div>
-        </div>
-
-        <!-- Love solving section - inline version -->
-        <div class="section">
-          <div class="solving-line">
-            <span class="junior">i love solving problems,</span>
-            <span class="developing">developing</span>
-            <span class="comma">, </span>
-            <span class="breaking">BREAKING</span><span class="comma">, </span>
-            <span class="coding">coding</span><span class="comma">, </span>
-            <span class="designing">designing</span
-            ><span class="comma">, </span>
-            <span class="presenting">PRESENTING</span
-            ><span class="comma">, </span>
-            <span class="regular">along the way.</span>
-          </div>
-        </div>
-
-        <!-- Featured Projects Section -->
-        <div class="section featured-section">
-          <p class="junior">what i'm working on</p>
-<<<<<<< Updated upstream
-          
-          <div class="featured-container">
-            <div class="featured-projects" id="featured-projects">
-              <div class="featured-project" data-project="spevents">
-                <div class="project-model" id="model-spevents"></div>
-                <h3>Spevents</h3>
-                <p>Real-time 3D photo gallery</p>
-              </div>
-              
-              <div class="featured-project" data-project="spark">
-                <div class="project-model" id="model-spark"></div>
-                <h3>Spark iOS</h3>
-                <p>Native iOS intranet app</p>
-              </div>
-              
-              <div class="featured-project" data-project="quizlite">
-                <div class="project-model" id="model-quizlite"></div>
-                <h3>QuizLITE</h3>
-                <p>Adaptive flashcard application</p>
-              </div>
-              
-              <div class="featured-project" data-project="ezdoordecs">
-                <div class="project-model" id="model-ezdoordecs"></div>
-                <h3>ezDoorDecs</h3>
-                <p>Door decoration generator</p>
-=======
-
-          <div class="featured-container">
-            <div class="featured-projects" id="featured-projects">
-              <div class="featured-project" data-project="spevents.live">
-                <div class="project-model" id="model-spevents.live"></div>
-                <h3>spevents.live</h3>
-                <p>canva meets kahoot at in-person eventss</p>
-              </div>
-
-              <div class="featured-project" data-project="glo-in-one_v2">
-                <div class="project-model" id="model-glo-in-one_v2"></div>
-                <h3>glo-in-one_v2</h3>
-                <p>research in medical imgaging w deep learning</p>
-              </div>
-
-              <div class="featured-project" data-project="vectr">
-                <div class="project-model" id="model-vectr"></div>
-                <h3>vectr</h3>
-                <p>find my iphone for first responders</p>
-              </div>
-
-              <div class="featured-project" data-project="bdblu">
-                <div class="project-model" id="model-bdblu"></div>
-                <h3>bdblu</h3>
-                <p>c++ low latency time-series db</p>
->>>>>>> Stashed changes
-              </div>
-            </div>
-          </div>
-        </div>
-
-<<<<<<< Updated upstream
-        <!-- Skills Section -->
-=======
-        <!-- NEW Skills Section -->
->>>>>>> Stashed changes
-        <div class="section skills-section">
-          <p class="junior">skills</p>
-
-          <div class="skills-grid">
-            <!-- Coding Skills -->
-            <div class="skill-category">
-              <h3>Coding</h3>
-              <div class="skill-tags">
-                <span>Python</span>
-                <span>JavaScript</span>
-                <span>TypeScript</span>
-                <span>React</span>
-                <span>Node.js</span>
-                <span>C/C++</span>
-                <span>STL</span>
-                <span>Qt</span>
-                <span>R</span>
-                <span>SQL</span>
-                <span>SQLite</span>
-              </div>
-            </div>
-
-            <!-- Tools Skills -->
-            <div class="skill-category">
-              <h3>Tools</h3>
-              <div class="skill-tags">
-                <span>Git</span>
-                <span>GitHub Actions</span>
-                <span>CI/CD</span>
-                <span>VS Code</span>
-                <span>IntelliJ</span>
-                <span>CLion</span>
-                <span>Jupyter</span>
-                <span>Figma</span>
-              </div>
-            </div>
-
-            <!-- Tech & Languages Skills -->
-            <div class="skill-category">
-              <h3>Tech & Languages</h3>
-              <div class="skill-tags">
-                <span>macOS</span>
-                <span>Windows</span>
-                <span>Microsoft Office</span>
-                <span>Google Workspace</span>
-                <span>PowerBI</span>
-                <span>Tableau</span>
-                <span>English</span>
-                <span>Bengali</span>
-                <span>Spanish</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="section projects-section">
-          <p class="junior">all projects</p>
-
-          <div class="projects-grid">
-            <!-- Spevents -->
-            <a href="https://github.com/fbablu/spevents" class="project-card">
-              <img
-                src="icons/spevents.png"
-                alt="Spevents icon"
-                class="project-icon"
-              />
-              <h3 class="project-title">Spevents</h3>
-              <p class="project-desc">
-                Real-time 3D photo gallery for special events
-              </p>
-              <div class="tools">
-                <span>TypeScript</span>
-                <span>React</span>
-                <span>AWS S3</span>
-              </div>
-            </a>
-
-            <!-- Spark iOS -->
-            
-              href="https://github.com/fbablu/Spark-iOS-Intranet"
-              class="project-card"
-            >
-              <img
-                src="icons/spark.png"
-                alt="Spark icon"
-                class="project-icon"
-              />
-              <h3 class="project-title">Spark iOS Intranet App</h3>
-              <p class="project-desc">
-                Native iOS intranet for Jenner & Block LLP
-              </p>
-              <div class="tools">
-                <span>Swift</span>
-                <span>SwiftUI</span>
-                <span>Cocoapods</span>
-              </div>
-            </a>
-
-            <!-- QuizLITE -->
-            
-              href="https://github.com/aditya-shrey/QuizLITE"
-              class="project-card"
-            >
-              <img
-                src="icons/quizlite.png"
-                alt="QuizLITE icon"
-                class="project-icon"
-              />
-              <h3 class="project-title">QuizLITE</h3>
-              <p class="project-desc">
-                Modern flashcard application with adaptive study sessions
-              </p>
-              <div class="tools">
-                <span>C++</span>
-                <span>SQLite</span>
-                <span>Qt6</span>
-              </div>
-            </a>
-
-            <!-- ezDoorDecs -->
-            <a href="https://github.com/fbablu/ezDoorDecs" class="project-card">
-              <img
-                src="icons/ezdoordecs.png"
-                alt="ezDoorDecs icon"
-                class="project-icon"
-              />
-              <h3 class="project-title">ezDoorDecs</h3>
-              <p class="project-desc">
-                Door decoration generator for Resident Advisors
-              </p>
-              <div class="tools">
-                <span>Python</span>
-                <span>pandas</span>
-                <span>pptx</span>
-              </div>
-            </a>
-
-            <!-- AIC Project -->
-            <a href="/projects/aic2024/aic.html" class="project-card">
-              <h3 class="project-title">Accenture Innovation Challenge 2024</h3>
-              <p class="project-desc">
-                Finalist presentation for National Park Foundation innovation
-                challenge
-              </p>
-              <div class="tools">
-                <span>PowerPoint</span>
-                <span>Figma</span>
-                <span>Design</span>
-              </div>
-            </a>
-
-            <!-- Healthcare Network Analysis -->
-            
-              href="https://github.com/fbablu/cs3891-network-project"
-              class="project-card"
-            >
-              <h3 class="project-title">Healthcare Distribution Network</h3>
-              <p class="project-desc">
-                Analysis of provider distribution and government investment
-                across U.S. states
-              </p>
-              <div class="tools">
-                <span>Python</span>
-                <span>NetworkX</span>
-                <span>Matplotlib</span>
-              </div>
-            </a>
-
-            <!-- Drug Review Analysis -->
-            
-              href="https://github.com/fbablu/drug-analysis"
-              class="project-card"
-            >
-              <h3 class="project-title">Drug Review Analysis</h3>
-              <p class="project-desc">
-                Text-based analysis of patient drug reviews and experiences
-              </p>
-              <div class="tools">
-                <span>R</span>
-                <span>tidyverse</span>
-                <span>ggplot2</span>
-              </div>
-            </a>
-
-            <!-- VABS Website -->
-            <a href="https://vabsvu.github.io" class="project-card">
-              <h3 class="project-title">VABS Website</h3>
-            <p class="project-desc">
-                Interactive website for Vanderbilt Association of Bengali
-                Students
-              </p>
-              <div class="tools">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-            </a>
-          </div>
-        </div>
+      <div style="margin-top: 6px">
+        Noise <b>grain</b>: <code>[</code>/<code>]</code> · <b>strength</b>:
+        <code>-</code>/<code>=</code> · <b>flow‑follow</b>:
+        <code>N</code> on/off
+      </div>
+      <div>
+        Mouse warp: <code>M</code> enable · <code>;</code>/<code>'</code> amp ·
+        <code>,</code>/<code>.</code> radius
+      </div>
+      <div>
+        Palette: Deep ocean to surface water with white foam in turbulent areas
+      </div>
+      <div class="credit">
+        Base by Liam Egan · Adaptation by Fardeen Bablu (please credit if you
+        reuse)
       </div>
     </div>
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="featured-projects.js"></script>
+    <!-- Top right: parameter values -->
+    <div class="params" id="params">
+      <div class="title">LIVE PARAMETERS</div>
+      <div class="param">
+        <span class="name">noiseScale:</span
+        ><span class="value" id="val-noiseScale">3.00</span>
+      </div>
+      <div class="param">
+        <span class="name">noiseStrength:</span
+        ><span class="value" id="val-noiseStrength">0.050</span>
+      </div>
+      <div class="param">
+        <span class="name">noiseFlow:</span
+        ><span class="value" id="val-noiseFlow">1.00</span>
+      </div>
+      <div class="param">
+        <span class="name">mouseEnable:</span
+        ><span class="value" id="val-mouseEnable">true</span>
+      </div>
+      <div class="param">
+        <span class="name">mouseAmp:</span
+        ><span class="value" id="val-mouseAmp">0.350</span>
+      </div>
+      <div class="param">
+        <span class="name">mouseRadius:</span
+        ><span class="value" id="val-mouseRadius">0.450</span>
+      </div>
+      <div class="param">
+        <span class="name">scale:</span
+        ><span class="value" id="val-scale">2.50</span>
+      </div>
+      <div class="param">
+        <span class="name">rotSpeed:</span
+        ><span class="value" id="val-rotSpeed">1.00</span>
+      </div>
+    </div>
+
+    <!-- Vertex shader: full-screen pass-through -->
+    <script id="vertexShader" type="x-shader/x-vertex">
+      void main(){ gl_Position = vec4(position, 1.0); }
+    </script>
+
+    <!-- Fragment shader: Ocean palette (deep blues→teal→turquoise→foam), flow-advected Gaussian noise, mouse warp -->
+    <script id="fragmentShader" type="x-shader/x-fragment">
+      precision highp float;
+
+      // Uniforms from JS
+      uniform vec2  u_resolution;   // canvas size in px
+      uniform float u_time;         // time accumulator
+      uniform vec2  u_mouse;        // mouse in px
+      uniform float u_scale;        // global zoom
+      uniform float u_rotSpeed;     // rotation speed multiplier
+
+      // Noise controls
+      uniform float u_noiseStrength; // sigma of Gaussian noise added to color
+      uniform float u_noiseScale;    // spatial frequency of the noise field
+      uniform float u_noiseFlow;     // advection strength by flow (q+r)
+
+      // Mouse warp controls
+      uniform bool  u_mouseEnable;   // enable mouse influence
+      uniform float u_mouseAmp;      // warp strength
+      uniform float u_mouseRadius;   // Gaussian falloff radius in UV units
+
+      const int   octaves = 6;
+      const float seed  = 43758.5453123;
+      const float seed2 = 73156.8473192;
+
+      // Hash → gradient for value noise
+      vec2 random2(vec2 st, float s){
+        st = vec2(dot(st, vec2(127.1,311.7)), dot(st, vec2(269.5,183.3)));
+        return -1.0 + 2.0*fract(sin(st)*s);
+      }
+
+      // Value noise (IQ)
+      float noise(vec2 st, float s){
+        vec2 i = floor(st);
+        vec2 f = fract(st);
+        vec2 u = f*f*(3.0-2.0*f);
+        return mix(
+          mix(dot(random2(i + vec2(0.0,0.0), s), f - vec2(0.0,0.0)),
+              dot(random2(i + vec2(1.0,0.0), s), f - vec2(1.0,0.0)), u.x),
+          mix(dot(random2(i + vec2(0.0,1.0), s), f - vec2(0.0,1.0)),
+              dot(random2(i + vec2(1.0,1.0), s), f - vec2(1.0,1.0)), u.x), u.y);
+      }
+
+      // fBm with mild anti-aliasing by rotation and amplitude decay
+      float fbm1(in vec2 st, float s){
+        float v = 0.0, a = 0.5; vec2 shift = vec2(100.0);
+        mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+        for(int i=0;i<octaves;++i){ v += a*noise(st,s); st = rot*st*2.0 + shift; a *= 0.4; }
+        return v;
+      }
+
+      // Complex warped pattern (original pattern2) - ONLY pattern used now
+      float pattern2(vec2 uv, float s, float t, inout vec2 q, inout vec2 r){
+        q = vec2(fbm1(uv + vec2(0.0), s), fbm1(uv + vec2(5.2,1.3), s));
+        r = vec2(fbm1(uv + 4.0*q + vec2(1.7 - t/2.0, 9.2), s),
+                 fbm1(uv + 4.0*q + vec2(8.3 - t/2.0, 2.8), s));
+        vec2 x = vec2(fbm1(uv + 5.0*r + vec2(21.7 - t/2.0, 90.2), s),
+                      fbm1(uv + 5.0*r + vec2(80.3 - t/2.0, 20.8), s));
+        vec2 y = vec2(fbm1(uv + 4.0*x + vec2(121.7 - t/2.0, 190.2), s),
+                      fbm1(uv + 4.0*x + vec2(180.3 - t/2.0, 120.8), s));
+        vec2 z = vec2(fbm1(uv + 3.0*y + vec2(221.7 - t/2.0, 290.2), s),
+                      fbm1(uv + 3.0*y + vec2(280.3 - t/2.0, 220.8), s));
+        vec2 w = vec2(fbm1(uv + 2.0*z + vec2(221.7 - t/2.0, 290.2), s),
+                      fbm1(uv + 2.0*z + vec2(280.3 - t/2.0, 220.8), s));
+        return fbm1(uv + 4.0*w, s);
+      }
+
+      // Two independent pseudo-randoms from a vec2
+      float hash12(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+      float hash12b(vec2 p){ return fract(sin(dot(p, vec2(269.5, 183.3))) * 73156.8473192); }
+
+      // Box-Muller → Gaussian N(0,1) from two uniforms
+      float gaussian(vec2 p){
+        float u1 = clamp(hash12(p), 1e-6, 1.0);
+        float u2 = hash12b(p);
+        return sqrt(-2.0*log(u1)) * cos(6.2831853*u2);
+      }
+
+      // Ocean palette: deep blues → teals → turquoise → foam
+      vec3 oceanPalette(float x, float accent, vec2 q, vec2 r, float flowMag){
+        // Ocean color stops from deep to surface
+        vec3 abyssBlue = vec3(0.01, 0.03, 0.08);      // #020714 - deep ocean black-blue
+        vec3 deepOcean = vec3(0.05, 0.12, 0.20);      // #0d1f33 - deep water
+        vec3 oceanBlue = vec3(0.10, 0.20, 0.35);      // #1a3359 - mid depth
+        vec3 seaBlue = vec3(0.15, 0.35, 0.50);        // #265980 - shallow water
+        vec3 teal = vec3(0.20, 0.50, 0.60);           // #338099 - teal transition
+        vec3 turquoise = vec3(0.30, 0.65, 0.75);      // #4da6bf - turquoise surface
+        vec3 cyan = vec3(0.50, 0.80, 0.90);           // #80cce6 - bright shallow
+        vec3 foam = vec3(0.85, 0.95, 0.98);           // #d9f2fa - white foam/spray
+
+        // Use flow magnitude to create wave crests and turbulence
+        float flowInfluence = clamp(flowMag * 1.2, 0.0, 1.0);
+
+        // Create rich oceanic gradient
+        vec3 base;
+        if(x < 0.15){
+          base = mix(abyssBlue, deepOcean, smoothstep(0.0, 0.15, x));
+        } else if(x < 0.35){
+          base = mix(deepOcean, oceanBlue, smoothstep(0.15, 0.35, x));
+        } else if(x < 0.55){
+          base = mix(oceanBlue, seaBlue, smoothstep(0.35, 0.55, x));
+        } else if(x < 0.70){
+          base = mix(seaBlue, teal, smoothstep(0.55, 0.70, x));
+        } else if(x < 0.85){
+          base = mix(teal, turquoise, smoothstep(0.70, 0.85, x));
+        } else {
+          base = mix(turquoise, cyan, smoothstep(0.85, 1.0, x));
+        }
+
+        // Add luminosity in high-flow areas (wave crests, turbulence)
+        base = mix(base, base * 1.5, flowInfluence * 0.5);
+
+        // Foam and spray in very turbulent areas
+        vec3 foamColor = mix(cyan, foam, accent);
+
+        // Strong flow creates white foam caps and spray
+        float foamMix = clamp(accent * (0.2 + flowInfluence * 0.8), 0.0, 1.0);
+        foamMix = smoothstep(0.3, 0.9, foamMix); // Make foam appear more dramatically
+
+        return mix(base, foamColor, foamMix);
+      }
+
+      void main(){
+        // Map pixel coords to aspect-correct UV space (y controls scale)
+        vec2 uv = (gl_FragCoord.xy - 0.5*u_resolution.xy) / u_resolution.y;
+        float t = u_time * 0.1;
+
+        // Rotate + zoom + slow drift
+        float ang = t * u_rotSpeed * 0.1;
+        mat2 rot = mat2(cos(ang), sin(ang), -sin(ang), cos(ang));
+        uv = rot * uv;
+        uv *= u_scale;
+        uv.x -= 0.2 * t;
+
+        // Mouse warp in UV space (Gaussian falloff)
+        if(u_mouseEnable){
+          vec2 m = (u_mouse - 0.5*u_resolution) / u_resolution.y;
+          vec2 d = m - uv;
+          float w = exp(-dot(d,d) / max(1e-6, u_mouseRadius*u_mouseRadius));
+          uv += d * (u_mouseAmp * w);
+        }
+
+        // Build the flow field and density using pattern2 only
+        vec2 q = vec2(0.0), r = vec2(0.0);
+        float d = pattern2(uv, seed, t, q, r);
+        float d2 = pattern2(r, seed2, t, q, r);
+        float cross = dot(q, r);
+
+        // Calculate flow magnitude for color variation
+        float flowMag = length(q + r) * 0.5;
+
+        // Base luminance from density with shaping - enhanced range for waves
+        float luma = smoothstep(-0.2, 1.2, 0.5 + 1.3*(d - 0.5) - 0.2*cross);
+
+        // Foam/spray driven by turbulence: strong cross-flow + high secondary density + flow magnitude
+        // This creates white caps and spray in turbulent areas
+        float accent = clamp(0.3 + 0.8*abs(cross) + 0.6*max(0.0, d2 - 0.2) + 0.4*flowMag, 0.0, 1.0);
+        accent = pow(accent, 0.8); // Slightly enhance mid-range for more visible foam
+
+        // Flow‑advected Gaussian noise: noise coordinates pushed by (q+r)
+        vec2 adv = uv * u_noiseScale + u_noiseFlow*(q + r) + 0.1*t;
+        float g = gaussian(adv);
+
+        // Compose final color (ocean palette + flow variation), then add Gaussian grain
+        vec3 col = oceanPalette(luma, accent, q, r, flowMag);
+        col += u_noiseStrength * g;
+
+        // Enhanced contrast for better flow visibility
+        col = clamp(mix(vec3(0.0), col, 1.15), 0.0, 1.0);
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    </script>
+
+    <script>
+      // Three.js bootstrap + uniform wiring + keyboard controls
+      let container, camera, scene, renderer, mesh;
+      const uniforms = {
+        u_time: { type: "f", value: 0.0 },
+        u_resolution: { type: "v2", value: new THREE.Vector2() },
+        u_mouse: { type: "v2", value: new THREE.Vector2() },
+        u_scale: { type: "f", value: 2.5 },
+        u_rotSpeed: { type: "f", value: 1.0 },
+        u_noiseStrength: { type: "f", value: 0.05 },
+        u_noiseScale: { type: "f", value: 3.0 },
+        u_noiseFlow: { type: "f", value: 1.0 },
+        u_mouseEnable: { type: "b", value: true },
+        u_mouseAmp: { type: "f", value: 0.35 },
+        u_mouseRadius: { type: "f", value: 0.45 },
+      };
+
+      function updateParamDisplay() {
+        document.getElementById("val-noiseScale").textContent =
+          uniforms.u_noiseScale.value.toFixed(2);
+        document.getElementById("val-noiseStrength").textContent =
+          uniforms.u_noiseStrength.value.toFixed(3);
+        document.getElementById("val-noiseFlow").textContent =
+          uniforms.u_noiseFlow.value.toFixed(2);
+        document.getElementById("val-mouseEnable").textContent =
+          uniforms.u_mouseEnable.value.toString();
+        document.getElementById("val-mouseAmp").textContent =
+          uniforms.u_mouseAmp.value.toFixed(3);
+        document.getElementById("val-mouseRadius").textContent =
+          uniforms.u_mouseRadius.value.toFixed(3);
+        document.getElementById("val-scale").textContent =
+          uniforms.u_scale.value.toFixed(2);
+        document.getElementById("val-rotSpeed").textContent =
+          uniforms.u_rotSpeed.value.toFixed(2);
+      }
+
+      function init() {
+        container = document.getElementById("container");
+        camera = new THREE.Camera();
+        camera.position.z = 1;
+        scene = new THREE.Scene();
+
+        const geometry = new THREE.PlaneBufferGeometry(2, 2);
+        const material = new THREE.ShaderMaterial({
+          uniforms,
+          vertexShader: document.getElementById("vertexShader").textContent,
+          fragmentShader: document.getElementById("fragmentShader").textContent,
+        });
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
+        container.appendChild(renderer.domElement);
+
+        onWindowResize();
+        window.addEventListener("resize", onWindowResize, false);
+        document.addEventListener("mousemove", (e) => {
+          uniforms.u_mouse.value.set(e.pageX, e.pageY);
+        });
+
+        // Keyboard controls
+        window.addEventListener("keydown", (e) => {
+          const k = e.key;
+          if (k === "[")
+            uniforms.u_noiseScale.value = Math.max(
+              0.25,
+              uniforms.u_noiseScale.value - 0.25
+            );
+          if (k === "]")
+            uniforms.u_noiseScale.value = Math.min(
+              20.0,
+              uniforms.u_noiseScale.value + 0.25
+            );
+          if (k === "-")
+            uniforms.u_noiseStrength.value = Math.max(
+              0.0,
+              uniforms.u_noiseStrength.value - 0.005
+            );
+          if (k === "=")
+            uniforms.u_noiseStrength.value = Math.min(
+              0.5,
+              uniforms.u_noiseStrength.value + 0.005
+            );
+          if (k === "n" || k === "N")
+            uniforms.u_noiseFlow.value =
+              uniforms.u_noiseFlow.value > 0.0 ? 0.0 : 1.0;
+          if (k === "m" || k === "M")
+            uniforms.u_mouseEnable.value = !uniforms.u_mouseEnable.value;
+          if (k === ";")
+            uniforms.u_mouseAmp.value = Math.max(
+              0.0,
+              uniforms.u_mouseAmp.value - 0.025
+            );
+          if (k === "'")
+            uniforms.u_mouseAmp.value = Math.min(
+              2.0,
+              uniforms.u_mouseAmp.value + 0.025
+            );
+          if (k === ",")
+            uniforms.u_mouseRadius.value = Math.max(
+              0.05,
+              uniforms.u_mouseRadius.value - 0.025
+            );
+          if (k === ".")
+            uniforms.u_mouseRadius.value = Math.min(
+              1.5,
+              uniforms.u_mouseRadius.value + 0.025
+            );
+          updateParamDisplay();
+        });
+
+        updateParamDisplay();
+        animate();
+      }
+
+      function onWindowResize() {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        uniforms.u_resolution.value.set(
+          renderer.domElement.width,
+          renderer.domElement.height
+        );
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        render();
+      }
+
+      function render() {
+        const accel =
+          1.0 + uniforms.u_mouse.value.x / Math.max(200.0, window.innerWidth);
+        uniforms.u_time.value += 0.05 * accel;
+        renderer.render(scene, camera);
+      }
+
+      init();
+    </script>
   </body>
 </html>
