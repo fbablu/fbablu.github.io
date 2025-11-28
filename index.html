@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
   </head>
   <body>
+    <div id="bg-container"></div>
+
     <div class="grid-container">
       <div class="content-area">
-        <h1>Fardeen Bablu</h1>
+        <h1 class="rolling-text">Fardeen Bablu</h1>
+
         <div class="social-links">
           <a
             href="https://www.linkedin.com/in/fbablu"
@@ -89,31 +94,12 @@
       </div>
 
       <p class="tagline">
-        Product engineer creating
-        <span class="serif-word">clarity</span> from
-        <span class="pixel-word">chaos</span>.
+        I build software that transforms
+        <span class="pixel-word">Chaos</span> into
+        <span class="serif-word">Clarity</span>
       </p>
 
-      <div class="drag-container">
-        <button class="cleanup-icon" title="Clean up">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-        </button>
-        <!-- Icons will be dynamically added here -->
-      </div>
+      <div class="project-grid" id="project-grid"></div>
     </div>
 
     <script src="script.js"></script>
