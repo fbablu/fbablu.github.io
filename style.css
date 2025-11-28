@@ -150,10 +150,10 @@ h1.rolling-text {
   width: 0.3em;
 }
 
-/* Updated Speed: 0.3s (was 0.5s) */
+/* Updated Speed: 0.3s (Fast) */
 .rolling-text:hover span {
   animation: roll-up 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: calc(var(--i) * 0.03s); /* Faster delay too */
+  animation-delay: calc(var(--i) * 0.03s);
 }
 
 .rolling-text:not(:hover) span {
@@ -198,7 +198,7 @@ h1.rolling-text {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-height: 280px; /* Increased height for content */
+  min-height: 280px;
 }
 
 /* --- Award Badge --- */
@@ -210,7 +210,7 @@ h1.rolling-text {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 215, 0, 0.1); /* Gold tint */
+  background: rgba(255, 215, 0, 0.1);
   border: 1px solid rgba(255, 215, 0, 0.3);
   padding: 4px 10px;
   border-radius: 20px;
@@ -236,7 +236,7 @@ h1.rolling-text {
   width: 64px;
   height: 64px;
   margin-bottom: 1rem;
-  margin-top: 1.5rem; /* Space for badge */
+  margin-top: 1.5rem;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
@@ -266,7 +266,7 @@ h1.rolling-text {
   line-height: 1.5;
   transition: color 0.3s ease;
   margin-bottom: 1.5rem;
-  flex-grow: 1; /* Pushes buttons down */
+  flex-grow: 1;
 }
 
 /* --- Action Buttons (Code/Pitch) --- */
@@ -367,7 +367,6 @@ h1.rolling-text {
     align-self: center;
   }
 
-  /* Only apply glow when JS adds the class */
   .project-card.active-mobile {
     transform: translateY(-4px) scale(1.01);
     background: rgba(255, 255, 255, 0.08);

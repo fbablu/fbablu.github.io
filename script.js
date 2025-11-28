@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     code: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
     pitch: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>`,
     trophy: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 6.73 6.73 0 002.743 1.346A6.707 6.707 0 019.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 00-2.25 2.25c0 .414.336.75.75.75h14.625a.75.75 0 00.75-.75 2.25 2.25 0 00-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 01-1.312-3.173 6.73 6.73 0 002.743-1.347 6.753 6.753 0 006.139-5.6.75.75 0 00-.585-.858 47.077 47.077 0 00-3.07-.543V2.62a.75.75 0 00-.658-.744 49.22 49.22 0 00-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 00-.657.744zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 013.16 5.337a45.6 45.6 0 012.006-.348v.262zm13.668 0c.668.121 1.336.237 2.006.348a5.265 5.265 0 01-2.863 3.207 6.72 6.72 0 00.857-3.294v-.262z" clip-rule="evenodd" /></svg>`,
+    live: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>`,
   };
 
   // --- Rolling Text Setup ---
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       codeLink: "https://github.com/fbablu/hush-mesh/",
       pitchLink:
         "https://drive.google.com/file/d/1GIMq0oROrFASG00U4HrpfS6FhYHmrKbj/view",
+      iconScale: 3,
     },
     {
       path: "icons/wallhax.svg",
@@ -48,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
       pitchLink:
         "https://docs.google.com/presentation/d/1ohvFnF6tULQ_vFGDLaKV6--he7dZ4CWQnwXMaSRhPIQ/edit?usp=sharing",
     },
-
     {
       path: "icons/gemicast.svg",
       name: "Gemicast",
@@ -65,13 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       award: "Accenture Innovation Challenge: Top 5 Finalist",
       pitchLink:
         "https://drive.google.com/file/d/1izkAAKIDs_o7c44yIynNjDJG2l48cLDM/view",
-    },
-    {
-      path: "icons/vectr.svg",
-      name: "vectr",
-      desc: "Internal GPS for First Responders",
-      pitchLink:
-        "https://www.figma.com/design/t3eZT3k53f7x71oeaF5yGC/vectr?node-id=0-1&t=pqYJJneRoVuDgQrI-1",
+      iconScale: 2,
     },
     {
       path: "icons/spevents.svg",
@@ -79,6 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Real-time Event Photo Platform.",
       codeLink: "https://github.com/fbablu/spevents-frontend",
       liveLink: "https://www.spevents.live/",
+    },
+    {
+      path: "icons/vabs.svg",
+      name: "vabsvu",
+      desc: "Website I made for the Vanderbilt Association of Bangladeshi Students.",
+      liveLink: "https://vabsvu.github.io/",
+      codeLink: "https://github.com/vabsvu/vabsvu.github.io",
+    },
+    {
+      path: "icons/vectr.svg",
+      name: "vectr",
+      desc: "Internal GPS for First Responders",
+      pitchLink:
+        "https://www.figma.com/design/t3eZT3k53f7x71oeaF5yGC/vectr?node-id=0-1&t=pqYJJneRoVuDgQrI-1",
     },
     {
       path: "icons/pong.svg",
@@ -91,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Network Project",
       desc: "Healthcare Network Analysis.",
       codeLink: "https://github.com/fbablu/cs3891-network-project",
+      iconScale: 2,
     },
     {
       path: "icons/quizlite.png",
@@ -102,13 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       path: "icons/crossspec.svg",
       name: "CrossSpec",
       desc: "Medical Imaging Research.",
-      // No link provided
-    },
-    {
-      path: "icons/vabs.svg",
-      name: "vabsvu",
-      desc: "Website I made for the Vanderbilt Association of Bangladeshi Students.",
-      // No link provided
+      codeLink: "https://github.com/fbablu/CrossSpec",
     },
   ];
 
@@ -133,6 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = document.createElement("img");
     img.src = project.path;
     img.alt = project.name;
+
+    // --- SCALING LOGIC ADDED HERE ---
+    if (project.iconScale) {
+      img.style.transform = `scale(${project.iconScale})`;
+    }
+
     iconContainer.appendChild(img);
     card.appendChild(iconContainer);
 
@@ -159,6 +169,16 @@ document.addEventListener("DOMContentLoaded", () => {
       actions.appendChild(codeBtn);
     }
 
+    if (project.liveLink) {
+      const liveBtn = document.createElement("a");
+      liveBtn.className = "action-btn";
+      liveBtn.href = project.liveLink;
+      liveBtn.target = "_blank";
+      liveBtn.rel = "noopener noreferrer";
+      liveBtn.innerHTML = `${icons.live} Visit`;
+      actions.appendChild(liveBtn);
+    }
+
     if (project.pitchLink) {
       const pitchBtn = document.createElement("a");
       pitchBtn.className = "action-btn";
@@ -173,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (actions.children.length > 0) {
       card.appendChild(actions);
     } else {
-      // Make the whole card clickable if no specific actions but we have a generic interaction intent
-      // Or leave it static.
       card.style.cursor = "default";
     }
 
