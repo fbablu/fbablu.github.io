@@ -3,7 +3,8 @@
 
 @font-face {
   font-family: "Coral Pixels";
-  src: url("fonts/coral-pixels.woff2") format("woff2"),
+  src:
+    url("fonts/coral-pixels.woff2") format("woff2"),
     url("fonts/coral-pixels.woff") format("woff");
 }
 
@@ -314,7 +315,8 @@ h1.rolling-text {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     border-color: rgba(103, 232, 249, 0.4);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    box-shadow:
+      0 10px 30px -10px rgba(0, 0, 0, 0.5),
       0 0 20px rgba(103, 232, 249, 0.2),
       inset 0 0 20px rgba(103, 232, 249, 0.05);
   }
@@ -339,7 +341,7 @@ h1.rolling-text {
 /* 2. Mobile: Scroll Trigger Only (active-mobile class) */
 @media (max-width: 768px) {
   .grid-container {
-    padding: 5vh 1.5rem 2rem;
+    padding: 5vh 1rem 2rem;
   }
 
   h1 {
@@ -349,6 +351,9 @@ h1.rolling-text {
   .project-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
   }
 
   .project-card {
@@ -371,7 +376,8 @@ h1.rolling-text {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     border-color: rgba(103, 232, 249, 0.4);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    box-shadow:
+      0 10px 30px -10px rgba(0, 0, 0, 0.5),
       0 0 20px rgba(103, 232, 249, 0.2),
       inset 0 0 20px rgba(103, 232, 249, 0.05);
   }

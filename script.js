@@ -140,7 +140,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- SCALING LOGIC ADDED HERE ---
     if (project.iconScale) {
-      img.style.transform = `scale(${project.iconScale})`;
+      // 1. Check if the device is mobile (less than 768px wide)
+      const isMobile = window.innerWidth < 768;
+
+      // 2. If mobile, cap the scale to a safe max (e.g., 1.5) so it fits in the card
+      //    Otherwise, use the full scale defined in your project data
+      const dynamicScale = isMobile
+        ? Math.min(project.iconScale, 1.5)
+        : project.iconScale;
+
+      img.style.transform = `scale(${dynamicScale})`;
     }
 
     iconContainer.appendChild(img);
