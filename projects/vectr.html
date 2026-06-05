@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fardeen bablu | vectr</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="vectr.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.854 3.646a.5.5 0 0 1 0 .708L2.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+        back
+      </a>
+
+      <header class="hero">
+        <div class="hero-meta">case study · 2026</div>
+        <h1>Vectr</h1>
+        <p class="hero-sub">
+          Pre-arrival spatial intelligence for EMTs. Co-founded as Vectr
+          Systems Inc.; I led all engineering and field research. Validated
+          with Greene County EMS, Tennessee. Wound down May 2026.
+        </p>
+        <div class="hero-actions">
+          <a
+            class="action-btn primary"
+            href="https://vectr.live/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live site</a
+          >
+          <a
+            class="action-btn"
+            href="https://drive.google.com/file/d/1ZsZuyx8sSqQYbHGGvmwQ09siQgBxAiKN/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Whitepaper</a
+          >
+          <a
+            class="action-btn"
+            href="https://www.youtube.com/watch?v=RIl4jYlfGCo"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Demo (3 min)</a
+          >
+          <a
+            class="action-btn"
+            href="https://www.figma.com/design/t3eZT3k53f7x71oeaF5yGC/vectr?node-id=0-1&t=pqYJJneRoVuDgQrI-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Original pitch</a
+          >
+        </div>
+      </header>
+
+      <section class="content-section">
+        <div class="embed-container">
+          <iframe
+            class="embed-frame loaded"
+            src="https://www.youtube.com/embed/RIl4jYlfGCo"
+            title="Vectr demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>What it was</h2>
+        <p>
+          Vectr was two products under one mission: cut the busywork that keeps
+          EMTs from focusing on patients.
+        </p>
+        <ul class="bullets">
+          <li>
+            <strong>Scene Intel</strong> — satellite + street-level imagery,
+            crew notes per address, transport routing with hazard zones, golden
+            hour countdown, offline-first storage, and a landing-zone (LZ)
+            detection system that auto-scored 100×100 ft helicopter sites from
+            satellite imagery.
+          </li>
+          <li>
+            <strong>AI Scribe</strong> — ambient voice capture on iOS that
+            converted patient encounters into structured NEMSIS ePCR fields,
+            attacking the ~45 min/shift charting tax. All inference on-device
+            (~450 MB total) — Parakeet TDT for speech, LFM2-350M for
+            structured extraction. PHI never left the device.
+          </li>
+        </ul>
+        <p>
+          Stack: Svelte 5 + Tauri on the desktop, SwiftUI + CarPlay on iOS, Rust
+          + Actix + PostgreSQL/PostGIS on the server (~35k req/s), DINOv2
+          trained on DGX Spark for satellite LZ scoring.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Origin</h2>
+        <p>
+          The idea didn't come from a brainstorm. It came from a 90-minute
+          conversation with <strong>Kitty-Jo Cox</strong>, a 3-year EMT in rural
+          Tennessee. She walked through a typical night call: dead-end road, no
+          streetlights, fog, no number on the house, truck wheels sinking in a
+          wet yard, every minute without compressions dropping survival 7–10%.
+        </p>
+        <p>
+          She wasn't complaining about navigation. She was describing a
+          visibility problem. EMTs respond to scenes they've never seen, in
+          conditions where their tools — a $100k CAD system, a 4 GB Surface
+          Pro, a personal phone — give them text and a fleet tracker.
+        </p>
+        <p>
+          The weekend after the interview, my co-founder Usman and I built the
+          first prototype at NexHacks. The Monday after, I sent the first email
+          to <strong>Myron Hughes</strong>, Assistant Director at Greene County
+          EMS.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Customer discovery: three days in Greene County</h2>
+        <p class="dateline">Feb 20–22, 2026 · 4 crew interviews · 1 full shift in MED6</p>
+        <p>
+          Kitty-Jo drove us up to Greeneville. Over three days we ran four
+          interviews and spent a shift in the truck. What we got:
+        </p>
+
+        <blockquote class="quote">
+          <p>"It's dark and there's no lights… no street lights."</p>
+          <footer>— Kitty-Jo, on rural night calls</footer>
+        </blockquote>
+
+        <blockquote class="quote">
+          <p>"Every minute without CPR, survival goes down 7–10%."</p>
+          <footer>— Kitty-Jo</footer>
+        </blockquote>
+
+        <blockquote class="quote">
+          <p>"I've had people call and they don't have addresses on their house."</p>
+          <footer>— Kitty-Jo</footer>
+        </blockquote>
+
+        <blockquote class="quote">
+          <p>"One driveway goes to 3 houses… which house is it?"</p>
+          <footer>— Myron, Asst. Director</footer>
+        </blockquote>
+
+        <h3>Hardware reality</h3>
+        <p>
+          What's actually in the truck:
+        </p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Truck</th>
+              <th>Device</th>
+              <th>RAM</th>
+              <th>Map tab use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MED6</td>
+              <td>Surface Pro 4 (Win 10)</td>
+              <td>4 GB</td>
+              <td>None — Google Maps on personal phones</td>
+            </tr>
+            <tr>
+              <td>MED2</td>
+              <td>Panasonic Toughpad FZ-G1</td>
+              <td>~4 GB</td>
+              <td>Same</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The map tab on tablet hardware that costs more than my rent is a
+          fleet tracker. No navigation, no routing. Every EMT I rode with used
+          Google Maps on a personal phone.
+        </p>
+
+        <h3>The wedge: landing zones</h3>
+        <p>
+          Greene County has <strong>zero FAA-registered helipads</strong>.
+          Every helicopter call is an ad-hoc landing — a church parking lot, a
+          school field, a Walmart. Crews spend critical minutes finding a flat
+          100×100 ft area within a survivable radius of the patient.
+        </p>
+        <p>
+          <strong>Myron flagged this. Kitty-Jo flagged this. Dispatch flagged it. Independently.</strong>
+          That was the wedge. Not navigation — landing zones.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Product decisions, made in the truck</h2>
+        <p>Almost every pre-ride-along plan got revised.</p>
+
+        <h3>1. Phone-first, not tablet-first</h3>
+        <p>
+          Original plan: Tauri desktop client on the truck's Surface. Reality:
+          that Surface has 4 GB of RAM, can't run Vectr next to IdnMobile
+          (CAD), and crews already don't trust the map tab. Pivot: native iOS
+          with CarPlay support as the primary surface; the Tauri client became
+          a fallback for dispatch desks and outer-zone trucks with phone dead
+          spots.
+        </p>
+
+        <h3>2. Offline-first</h3>
+        <p>
+          Rural East Tennessee has cell dead zones, specifically the area near
+          the NC line. Hospitals are an hour away. If the network is a hard
+          dependency, the product breaks on the calls that matter most. So:
+          local-first cache, syncing when online, with map tiles + crew notes
+          + LZ candidates packaged per county.
+        </p>
+
+        <h3>3. LZ as the painkiller</h3>
+        <p>
+          Navigation is a vitamin — Google Maps + CAD already solve "where is
+          it" at 80%. Landing zones are a real, unsolved, expensive problem.
+          We built <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>,
+          fed it FAA NASR data, USGS 3DEP elevation, and Overture density
+          scoring, then trained a DINOv2-Small (22M parameter) satellite
+          scorer on DGX Spark — precomputing 21 candidate landing zones for a
+          county with zero FAA-registered helipads.
+        </p>
+
+        <h3>4. On-device AI for the Scribe</h3>
+        <p>
+          Patient data is PHI. PHI in the cloud is a HIPAA + ESO compliance
+          tax we couldn't afford as a pre-revenue startup. So the iOS AI
+          Scribe runs entirely on-device via Cactus — Parakeet TDT for
+          streaming STT (4.65% WER), LFM2-350M for structured extraction,
+          silero-VAD for speech detection. ~450 MB resident memory total,
+          monitored under iOS memory pressure.
+        </p>
+
+        <h3>5. CAD address auto-flow as table stakes</h3>
+        <p>
+          Director T.J. said it on the second call: <em>"It has to be
+          seamless."</em> If a crew has to retype the dispatch address into
+          Vectr, the product is dead on arrival. IdnMobile has no public API,
+          so we built a clipboard-monitor workaround for the Surface and a
+          separate iOS strategy. This — not LZ scoring, not the scribe — was
+          the actual gating constraint on the pilot.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Design choices</h2>
+        <ul class="bullets">
+          <li>
+            <strong>Dark theme everywhere.</strong> Crews work nights. White
+            UI in a dark cab destroys night vision.
+          </li>
+          <li>
+            <strong>24-hour time.</strong> Military convention; what every EMS
+            clock and run sheet already uses.
+          </li>
+          <li>
+            <strong>Map as the primary canvas.</strong> Every other surface is
+            overlay. No login screen between dispatch and intel.
+          </li>
+          <li>
+            <strong>One-handed operation.</strong> Buttons sized for gloved
+            hands. Critical actions reachable with a thumb on a phone mounted
+            to the dash.
+          </li>
+          <li>
+            <strong>"R&D preview" labels on AI scores.</strong> LZ quality
+            scores are model output; never presented as ground truth to crews
+            making decisions in seconds.
+          </li>
+        </ul>
+        <!-- TODO: Add screenshot grid here once Playwright captures are in. Candidates: iOS Scribe live capture, LZ Finder panel, route preview, scene intel dashboard, landing page hero. -->
+      </section>
+
+      <section class="content-section">
+        <h2>The pilot path</h2>
+        <p>After the ride-along we drafted a pilot agreement:</p>
+        <ul class="bullets">
+          <li>Free 6-month trial on units MED1 and MED6</li>
+          <li>Business Associate Agreement for patient data handling</li>
+          <li>Cancel anytime with 30 days notice</li>
+          <li>Crews retain decision authority — Vectr is decision support, not dispatch</li>
+        </ul>
+        <p>
+          Sent to Myron and his Director T.J. on March 6, 2026. Went to county
+          legal the next week. Myron presented our one-pager at a regional
+          directors meeting on March 12 — a few directors scanned the QR code.
+        </p>
+        <p>
+          Then it stalled. County legal didn't come back. The directors didn't
+          follow up. By late March I was checking in weekly with no concrete
+          movement.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Why I closed it</h2>
+        <p>
+          I graduated in May 2026. The project had been drifting since March,
+          and the math wasn't there:
+        </p>
+        <ul class="bullets">
+          <li>~7 weeks of silence from Greene County after legal stall</li>
+          <li>My co-founder Usman wanted to dissolve the entity</li>
+          <li>I'd moved to Virginia and started a different primary project</li>
+          <li>
+            The competitor space (RapidSOS, FirstNet, Prepared, Carbyne) is
+            well-capitalized and full-time; the only honest path forward
+            part-time was cold-emailing rural EMS departments without
+            conviction
+          </li>
+        </ul>
+        <p>
+          I sent Myron a wind-down email on May 16, 2026. He'd been one of the
+          most generous customers a first-time founder could ask for; the
+          relationship deserved a clean close, not a slow ghost.
+        </p>
+        <p>
+          The legal entity (Vectr Systems Inc., Delaware C-corp) stays alive
+          through Greene County's June budget meeting, then dissolves.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>What I'd do differently</h2>
+        <ol class="numbered">
+          <li>
+            <strong>Move on dispatch integration first.</strong> Every other
+            product decision was downstream of "can we get the address
+            automatically?" We treated it as a future problem. It was the
+            first problem.
+          </li>
+          <li>
+            <strong>Run the entity decision in parallel with the pilot, not
+            after.</strong> A 50/50 split with a co-founder who doesn't share
+            your conviction is a slow leak.
+          </li>
+          <li>
+            <strong>Don't treat the field partner as a "case study."</strong>
+            Treat them as the only thing that matters. Show up more than
+            three days. Eat the dinner. Call between visits.
+          </li>
+          <li>
+            <strong>Sell the painkiller, not the vision.</strong> The
+            whitepaper pitches Scene Intel + AI Scribe as a system. Greene
+            County wanted <em>the LZ tool that works on the helicopter
+            calls</em>. Should have led with one feature, not five.
+          </li>
+          <li>
+            <strong>Closure is a feature.</strong> Closing well let me sleep,
+            kept the relationships intact, and made the work portable into
+            this case study. Not every project ships. Every project should end
+            on purpose.
+          </li>
+        </ol>
+      </section>
+
+      <section class="content-section credits">
+        <h2>Credits</h2>
+        <p>
+          <strong>Greene County / Greeneville EMS</strong> — Myron Hughes,
+          Kitty-Jo Cox, T.J. Manis, Micah, Jason, Kaylee, Andrew, Haley,
+          Scott, Easton, and the crews of MED1, MED2, and MED6. Three days of
+          field access and the most honest feedback I've ever received.
+        </p>
+        <p>
+          <strong>Vanderbilt University</strong> — Dr. Ole Molvig at the
+          Wond'ry Emerging Technology Lab, faculty advisor.
+        </p>
+        <p>
+          <strong>Co-founder</strong> — Usman Khan (CEO).
+        </p>
+      </section>
+
+      <footer class="page-footer">
+        <p>
+          Built 2026 · Wound down May 2026 · Documented for the next thing.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -259,6 +259,16 @@ h1.rolling-text {
   transition: text-shadow 0.3s ease;
 }
 
+.project-card h3 .title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-card h3 .title-link:hover {
+  color: #67e8f9;
+}
+
 .project-card p {
   color: #a0aec0;
   font-family: "Inter", sans-serif;

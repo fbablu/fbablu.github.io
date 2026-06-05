@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pitch: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>`,
     trophy: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 6.73 6.73 0 002.743 1.346A6.707 6.707 0 019.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 00-2.25 2.25c0 .414.336.75.75.75h14.625a.75.75 0 00.75-.75 2.25 2.25 0 00-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 01-1.312-3.173 6.73 6.73 0 002.743-1.347 6.753 6.753 0 006.139-5.6.75.75 0 00-.585-.858 47.077 47.077 0 00-3.07-.543V2.62a.75.75 0 00-.658-.744 49.22 49.22 0 00-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 00-.657.744zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 013.16 5.337a45.6 45.6 0 012.006-.348v.262zm13.668 0c.668.121 1.336.237 2.006.348a5.265 5.265 0 01-2.863 3.207 6.72 6.72 0 00.857-3.294v-.262z" clip-rule="evenodd" /></svg>`,
     live: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>`,
+    paper: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6M16 13H8M16 17H8M10 9H8" /></svg>`,
   };
 
   // --- Rolling Text Setup ---
@@ -31,6 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Project Data ---
   const projects = [
     {
+      path: "icons/niyah.png",
+      name: "Niyah",
+      desc: "Founder & iOS Engineer. A focus app you stake your own money on — Swift Screen Time extensions, Apple Pay + Stripe + Plaid; earned Apple's FamilyControls Distribution.",
+      liveLink: "https://niyah.live",
+    },
+    {
+      path: "icons/sentinel.svg",
+      name: "Sentinel",
+      desc: "LLM refusal-decay research at Vanderbilt's Institute of National Security (Wicked Problems Lab) — 300 HarmBench/AdvBench/JailbreakBench probes across GPT-4o, Claude, and DeepSeek-R1 over 4 threat domains.",
+    },
+    {
       path: "icons/hushmesh2.svg",
       name: "HUSH-MESH",
       desc: "Autonomous defense network with RF-silent drones.",
@@ -41,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       iconScale: 3,
     },
     {
-      path: "icons/wallhax.svg",
-      name: "WallHax",
-      desc: "Custom object permanence model surpassing ChatGPT, Claude, Gemini using Qwen + Spatial Mapping.",
+      path: "icons/occlusiontrack.svg",
+      name: "OcclusionTrack",
+      desc: "Object-permanence vision model that tracks occluded objects — 12% to 94% accuracy with Qwen + spatial mapping.",
       award: "Ironsite Spatial Hackathon: 3rd Place ($2.5K)",
       codeLink:
         "https://github.com/usman-khan12/vision-model-ironsite-x-vandy-hackathon",
@@ -72,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       path: "icons/spevents.svg",
       name: "spevents.live",
       desc: "Real-time Event Photo Platform.",
+      caseStudyLink: "/projects/spevents.html",
       codeLink: "https://github.com/fbablu/spevents-frontend",
       liveLink: "https://www.spevents.live/",
     },
@@ -85,7 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       path: "icons/vectr.svg",
       name: "vectr",
-      desc: "Internal GPS for First Responders",
+      desc: "Pre-arrival spatial intelligence for EMTs. Validated with Greene County EMS.",
+      caseStudyLink: "/projects/vectr.html",
+      liveLink: "https://vectr.live/",
+      paperLink:
+        "https://drive.google.com/file/d/1ZsZuyx8sSqQYbHGGvmwQ09siQgBxAiKN/view?usp=sharing",
       pitchLink:
         "https://www.figma.com/design/t3eZT3k53f7x71oeaF5yGC/vectr?node-id=0-1&t=pqYJJneRoVuDgQrI-1",
     },
@@ -157,7 +174,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 4. Title & Desc
     const title = document.createElement("h3");
-    title.textContent = project.name;
+    if (project.caseStudyLink) {
+      const link = document.createElement("a");
+      link.href = project.caseStudyLink;
+      link.className = "title-link";
+      link.textContent = project.name;
+      title.appendChild(link);
+    } else {
+      title.textContent = project.name;
+    }
     card.appendChild(title);
 
     const desc = document.createElement("p");
@@ -186,6 +211,16 @@ document.addEventListener("DOMContentLoaded", () => {
       liveBtn.rel = "noopener noreferrer";
       liveBtn.innerHTML = `${icons.live} Visit`;
       actions.appendChild(liveBtn);
+    }
+
+    if (project.paperLink) {
+      const paperBtn = document.createElement("a");
+      paperBtn.className = "action-btn";
+      paperBtn.href = project.paperLink;
+      paperBtn.target = "_blank";
+      paperBtn.rel = "noopener noreferrer";
+      paperBtn.innerHTML = `${icons.paper} Whitepaper`;
+      actions.appendChild(paperBtn);
     }
 
     if (project.pitchLink) {

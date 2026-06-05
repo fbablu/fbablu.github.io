@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fardeen bablu | spevents</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="vectr.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.854 3.646a.5.5 0 0 1 0 .708L2.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+        back
+      </a>
+
+      <header class="hero">
+        <div class="hero-meta">case study · 2024–2025</div>
+        <h1>spevents.live</h1>
+        <p class="hero-sub">
+          Real-time photo wall for live events. Guests scan a QR code — no app
+          download — and their photos hit the venue screen in seconds. Shipped
+          at 4 live events.
+        </p>
+        <div class="hero-actions">
+          <a
+            class="action-btn primary"
+            href="https://www.spevents.live/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live site</a
+          >
+          <a
+            class="action-btn"
+            href="https://github.com/fbablu/spevents-frontend"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Code</a
+          >
+        </div>
+      </header>
+
+      <section class="content-section">
+        <h2>What it is</h2>
+        <ul class="bullets">
+          <li>
+            <strong>Real-time event photo wall</strong> — QR upload with no app
+            download; guest photos reach the venue screen near-instantly via
+            adaptive polling + CloudFront edge delivery. Served 200+ photos
+            across 4 live events.
+          </li>
+          <li>
+            <strong>Full-stack 3D/AI</strong> — React Three Fiber venue
+            reconstruction, Claude-generated captions, on-device WASM NSFW
+            moderation, and direct-to-edge Blob uploads.
+          </li>
+          <li>
+            <strong>Mobile, low-latency UX</strong> — WebRTC camera capture,
+            swipe-to-review, 30–70% pre-upload compression, lazy blur-up
+            images, and scavenger-hunt gamification.
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>How it's built</h2>
+        <p>
+          Serverless front to back: a React + React Three Fiber client, REST
+          API on Vercel, Firebase Auth + Firestore for sessions, and S3 +
+          CloudFront for photo storage and edge delivery. Five display modes —
+          Grid, Slideshow, 3D venue, Parallax, and Fun — animate with Framer
+          Motion, and client-side NSFW moderation screens photos before they
+          reach the wall.
+        </p>
+        <p>
+          The design constraint that shaped everything: a wedding guest will
+          not download an app. Scan, shoot, see it on the wall — under ten
+          seconds, zero onboarding.
+        </p>
+      </section>
+
+      <footer class="page-footer">
+        <p>Built 2024–2025 · Live at spevents.live</p>
+      </footer>
+    </div>
+  </body>
+</html>
