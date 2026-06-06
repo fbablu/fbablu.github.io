@@ -32,6 +32,19 @@
     return p < 0 ? p + 1 : p;
   }
 
+  // Narrow windows for the four instantaneous phases (new/quarters/full) so the
+  // label matches the drawn illumination; the rest is crescent/gibbous.
+  function phaseName(p) {
+    if (p < 0.02 || p >= 0.98) return "New moon";
+    if (p < 0.23) return "Waxing crescent";
+    if (p < 0.27) return "First quarter";
+    if (p < 0.48) return "Waxing gibbous";
+    if (p < 0.52) return "Full moon";
+    if (p < 0.73) return "Waning gibbous";
+    if (p < 0.77) return "Last quarter";
+    return "Waning crescent";
+  }
+
   // SVG path for the lit portion of the moon (northern-hemisphere orientation).
   function moonLitPath(cx, cy, R, p) {
     var a = Math.cos(p * 2 * Math.PI); // +1 near new, -1 near full
@@ -67,9 +80,9 @@
     return s;
   }
 
-  function buildScene() {
+  function buildScene(p) {
     var litR = 5.5;
-    var lit = moonLitPath(CX, MOON_Y, litR, moonPhase(new Date()));
+    var lit = moonLitPath(CX, MOON_Y, litR, p);
     return (
       '<svg viewBox="0 0 48 36">' +
       '<defs><clipPath id="tt-sky"><path d="M0 0 H48 V30 Q24 25 0 30 Z"/></clipPath></defs>' +
@@ -97,7 +110,10 @@
   function init() {
     var btn = document.getElementById("theme-toggle");
     if (!btn) return;
-    btn.innerHTML = buildScene();
+    var p = moonPhase(new Date());
+    btn.innerHTML = buildScene(p);
+    var caption = document.getElementById("moon-phase");
+    if (caption) caption.textContent = phaseName(p);
     var orbit = btn.querySelector(".orbit");
     var sun = btn.querySelector(".sun");
     var moon = btn.querySelector(".moon");

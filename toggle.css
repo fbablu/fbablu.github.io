@@ -1,10 +1,49 @@
 /* Sun/moon-over-a-hill theme toggle. Shared by every page.
-   The theme color variables live in style.css / projects/vectr.css. */
+   The theme color variables live in style.css / projects/vectr.css / aic.css. */
+
+main,
+.container {
+  position: relative;
+}
+
+/* Top row that holds the name block (index) or back-link (sub-pages) on the
+   left and the toggle on the right, aligned to the content column. */
+.site-header,
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header-text {
+  min-width: 0;
+}
+
+.theme-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex: none;
+}
+
+/* On the off-brand sub-pages the control floats to the top-right of the column. */
+.container > .theme-control {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.moon-phase {
+  font-style: italic;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  color: var(--muted);
+  white-space: nowrap;
+}
 
 .theme-toggle {
-  position: fixed;
-  top: 0.85rem;
-  right: 0.85rem;
   width: 2.9rem;
   height: 2.5rem;
   padding: 0;
@@ -58,6 +97,7 @@
   transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1);
 }
 
+/* Sun and moon share the same outline weight so they read as a set. */
 .sun circle {
   fill: none;
   stroke: currentColor;
@@ -77,8 +117,7 @@
 .moon-disk {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.4;
-  opacity: 0.25;
+  stroke-width: 2;
 }
 .moon-lit {
   fill: currentColor;

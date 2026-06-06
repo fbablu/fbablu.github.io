@@ -15,15 +15,19 @@
     <script src="/theme.js"></script>
   </head>
   <body>
-    <button
-      id="theme-toggle"
-      class="theme-toggle"
-      type="button"
-      aria-label="Toggle light or dark theme"
-    ></button>
-
     <main class="container">
-      <a href="/" class="back-link">&larr; back</a>
+      <div class="topbar">
+        <a href="/" class="back-link">&larr; back</a>
+        <div class="theme-control">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle light or dark theme"
+          ></button>
+          <span class="moon-phase" id="moon-phase"></span>
+        </div>
+      </div>
 
       <header class="hero">
         <div class="hero-meta">case study · 2026</div>
