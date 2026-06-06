@@ -52,9 +52,30 @@
     var limb = p <= 0.5 ? 1 : 0; // waxing lights the right limb
     var term = a > 0 ? 1 - limb : limb; // fill the lit fraction f, not its complement
     return (
-      "M " + cx + " " + (cy - R) +
-      " A " + R + " " + R + " 0 0 " + limb + " " + cx + " " + (cy + R) +
-      " A " + rx.toFixed(3) + " " + R + " 0 0 " + term + " " + cx + " " + (cy - R) +
+      "M " +
+      cx +
+      " " +
+      (cy - R) +
+      " A " +
+      R +
+      " " +
+      R +
+      " 0 0 " +
+      limb +
+      " " +
+      cx +
+      " " +
+      (cy + R) +
+      " A " +
+      rx.toFixed(3) +
+      " " +
+      R +
+      " 0 0 " +
+      term +
+      " " +
+      cx +
+      " " +
+      (cy - R) +
       " Z"
     );
   }
@@ -72,10 +93,15 @@
       var c = Math.cos(ang),
         sn = Math.sin(ang);
       s +=
-        '<line x1="' + (cx + c * inner).toFixed(2) +
-        '" y1="' + (cy + sn * inner).toFixed(2) +
-        '" x2="' + (cx + c * outer).toFixed(2) +
-        '" y2="' + (cy + sn * outer).toFixed(2) + '"/>';
+        '<line x1="' +
+        (cx + c * inner).toFixed(2) +
+        '" y1="' +
+        (cy + sn * inner).toFixed(2) +
+        '" x2="' +
+        (cx + c * outer).toFixed(2) +
+        '" y2="' +
+        (cy + sn * outer).toFixed(2) +
+        '"/>';
     }
     return s;
   }
@@ -87,10 +113,23 @@
       '<svg viewBox="0 0 48 36">' +
       '<defs><clipPath id="tt-sky"><path d="M0 0 H48 V30 Q24 25 0 30 Z"/></clipPath></defs>' +
       '<g clip-path="url(#tt-sky)"><g class="orbit">' +
-      '<g class="sun"><circle cx="' + CX + '" cy="' + SUN_Y + '" r="5"/>' +
-      rays(CX, SUN_Y, 8, 7.5, 9.8) + "</g>" +
-      '<g class="moon"><circle class="moon-disk" cx="' + CX + '" cy="' + MOON_Y + '" r="' + litR + '"/>' +
-      '<path class="moon-lit" d="' + lit + '"/></g>' +
+      '<g class="sun"><circle cx="' +
+      CX +
+      '" cy="' +
+      SUN_Y +
+      '" r="5"/>' +
+      rays(CX, SUN_Y, 8, 7.5, 9.8) +
+      "</g>" +
+      '<g class="moon"><circle class="moon-disk" cx="' +
+      CX +
+      '" cy="' +
+      MOON_Y +
+      '" r="' +
+      litR +
+      '"/>' +
+      '<path class="moon-lit" d="' +
+      lit +
+      '"/></g>' +
       "</g></g>" +
       '<path class="hill" d="M3 30 Q24 25 45 30"/>' +
       "</svg>"
