@@ -81,7 +81,7 @@
   }
 
   function buildScene(p) {
-    var litR = 5.5;
+    var litR = 7; // matches the sun's visual size (sun reads larger via its rays)
     var lit = moonLitPath(CX, MOON_Y, litR, p);
     return (
       '<svg viewBox="0 0 48 36">' +
