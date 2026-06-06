@@ -267,3 +267,28 @@ code {
 .page-footer p {
   margin: 0;
 }
+
+/* Theme fade for elements that set their own color/border (body's color fade
+   in toggle.css covers everything that inherits). */
+h1,
+h2,
+h3,
+p,
+li,
+code,
+.hero,
+.hero-meta,
+.hero-sub,
+.dateline,
+.quote,
+.quote figcaption,
+.data-table,
+.data-table th,
+.data-table td,
+.embed-container,
+.credits p,
+.page-footer {
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}

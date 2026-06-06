@@ -223,3 +223,18 @@ a:focus-visible {
   display: inline-block;
   padding: 0.15rem 0;
 }
+
+/* Theme fade for elements that set their own color/border (the rest of the
+   text inherits body's color and fades with it). */
+h2,
+hr,
+.currently,
+.compact-desc,
+.project-links,
+.project-links a,
+.links a,
+.award {
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}

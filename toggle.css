@@ -1,17 +1,19 @@
 /* Sun/moon-over-a-hill theme toggle. Shared by every page.
    The theme color variables live in style.css / projects/vectr.css / aic.css. */
 
-/* Soft fade when the theme flips. Bare * keeps specificity low so element
-   rules (the caption's opacity fade, the toggle's transform) win. */
-*,
-*::before,
-*::after {
+/* Soft, fast theme fade. Animate color/background on `body` so every element
+   that INHERITS color fades in lockstep from a single transition. (A universal
+   `* { transition: color }` puts a separate transition on every nested node;
+   on mobile those compound and the deepest text lags seconds behind the bg.)
+   Elements that set their own color opt in via their stylesheet. */
+body {
   transition:
-    background-color 0.45s ease,
-    color 0.45s ease,
-    border-color 0.45s ease,
-    fill 0.45s ease,
-    stroke 0.45s ease;
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.theme-toggle {
+  transition: color 0.2s ease;
 }
 
 main,
@@ -151,6 +153,19 @@ main,
 }
 .moon-lit {
   fill: currentColor;
+}
+
+/* Mobile: stack the toggle on its own row above full-width text, so the name
+   and intro get the whole column (less wrapping) instead of being squeezed. */
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .theme-control {
+    align-items: flex-end;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
