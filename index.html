@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fardeen bablu</title>
-    <meta name="description" content="Fardeen Bablu. I build iOS and full-stack products." />
+    <meta name="description" content="Fardeen Bablu. I build iOS and full-stack products as a founding engineer." />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
@@ -13,21 +13,31 @@
     <main>
       <header>
         <h1>Fardeen Bablu</h1>
-        <p class="intro">I build iOS and full-stack products.</p>
-        <nav aria-label="Profiles">
+        <p class="intro">
+          I build iOS and full-stack products as a founding engineer.
+          Vanderbilt CS + Math + Public Health.
+        </p>
+        <p class="currently">
+          <span class="dot" aria-hidden="true"></span>
+          Currently building Niyah and researching LLM security at Vanderbilt's
+          INSO.
+        </p>
+        <nav aria-label="Links">
           <a href="https://github.com/fbablu/" target="_blank" rel="noopener noreferrer">GitHub</a>
           ·
           <a href="https://www.linkedin.com/in/fbablu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           ·
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          ·
+          <a href="/blog/">Writing</a>
         </nav>
       </header>
 
       <hr />
 
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading">Projects</h2>
-        <ul class="projects">
+      <section aria-labelledby="selected-heading">
+        <h2 id="selected-heading">Selected work</h2>
+        <ul class="projects featured">
           <li>
             <div class="project-head">
               <h3>Niyah</h3>
@@ -36,11 +46,10 @@
               </p>
             </div>
             <p>
-              Founder and iOS engineer. A focus app where you stake your own
-              money on a session: finish it and you keep the money, quit early
-              and you forfeit it. Built in Swift with Screen Time extensions,
-              Apple Pay, Stripe, and Plaid, plus Apple's FamilyControls
-              Distribution entitlement.
+              A focus app where you stake your own money on a session: finish it
+              and you keep the money, quit early and you forfeit it. Built in
+              Swift with Screen Time extensions, Apple Pay, Stripe, and Plaid,
+              plus Apple's FamilyControls Distribution entitlement.
             </p>
           </li>
 
@@ -53,106 +62,6 @@
               Security (Wicked Problems Lab). 300
               HarmBench/AdvBench/JailbreakBench probes across GPT-4o, Claude,
               and DeepSeek-R1 over 4 threat domains.
-            </p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>HUSH-MESH</h3>
-              <p class="project-links">
-                <a href="https://github.com/fbablu/hush-mesh/" target="_blank" rel="noopener noreferrer">code</a>
-                ·
-                <a href="https://drive.google.com/file/d/1GIMq0oROrFASG00U4HrpfS6FhYHmrKbj/view" target="_blank" rel="noopener noreferrer">pitch</a>
-              </p>
-            </div>
-            <p>
-              A simulated drone swarm for maritime convoy defense. Each drone
-              runs YOLOv8, an A* planner routes them around threats, and they
-              coordinate over a self-healing MQTT mesh. Python/FastAPI backend,
-              a small PyTorch threat classifier, and a React dashboard on top.
-            </p>
-            <p class="award">2nd Place ($15K), AWS Mission Autonomy</p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>OcclusionTrack</h3>
-              <p class="project-links">
-                <a href="https://github.com/usman-khan12/vision-model-ironsite-x-vandy-hackathon" target="_blank" rel="noopener noreferrer">code</a>
-                ·
-                <a href="https://docs.google.com/presentation/d/1ohvFnF6tULQ_vFGDLaKV6--he7dZ4CWQnwXMaSRhPIQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">pitch</a>
-              </p>
-            </div>
-            <p>
-              A hackathon attempt at giving a vision-language model object
-              permanence: it wraps Qwen3-VL, pools per-object features into a
-              32×32 spatial memory grid, and when something gets occluded it
-              nudges the prompt so the model answers "hidden," not "gone."
-            </p>
-            <p class="award">3rd Place ($2.5K), Ironsite Spatial Hackathon</p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>Gemicast</h3>
-              <p class="project-links">
-                <a href="https://github.com/fbablu/gemicast" target="_blank" rel="noopener noreferrer">code</a>
-                ·
-                <a href="https://docs.google.com/presentation/d/1OpJ9mJ16NzwnT-PTWYOMYuWrQTtofdJ9/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener noreferrer">pitch</a>
-              </p>
-            </div>
-            <p>
-              Power-outage risk for Tennessee counties. Gradient-boosted trees
-              (TensorFlow Decision Forests) trained on Oak Ridge's Eagle-I
-              outage history plus NOAA weather, served through BigQuery ML behind
-              an Angular dashboard.
-            </p>
-            <p class="award">Top 3 Finalist, Google Solutions Challenge</p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>NPForward</h3>
-              <p class="project-links">
-                <a href="https://drive.google.com/file/d/1izkAAKIDs_o7c44yIynNjDJG2l48cLDM/view" target="_blank" rel="noopener noreferrer">pitch</a>
-              </p>
-            </div>
-            <p>An AR collectibles experience for the U.S. National Parks.</p>
-            <p class="award">Top 5 Finalist, Accenture Innovation Challenge</p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>spevents.live</h3>
-              <p class="project-links">
-                <a href="/projects/spevents.html">case study</a>
-                ·
-                <a href="https://www.spevents.live/" target="_blank" rel="noopener noreferrer">live</a>
-                ·
-                <a href="https://github.com/fbablu/spevents-frontend" target="_blank" rel="noopener noreferrer">code</a>
-              </p>
-            </div>
-            <p>
-              A QR-code photo wall for live events: guests scan, shoot in a
-              custom in-browser camera, and their photos land on the venue
-              screen, including a procedural 3D wedding-venue view built with
-              React Three Fiber.
-            </p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>vabsvu</h3>
-              <p class="project-links">
-                <a href="https://vabsvu.github.io/" target="_blank" rel="noopener noreferrer">live</a>
-                ·
-                <a href="https://github.com/vabsvu/vabsvu.github.io" target="_blank" rel="noopener noreferrer">code</a>
-              </p>
-            </div>
-            <p>
-              A promo site for the Vanderbilt Association of Bangladeshi Students'
-              Mock Shaadi event. Built with React and Three.js, with a 3D thali
-              you can spin and a scroll-driven henna border.
             </p>
           </li>
 
@@ -175,6 +84,93 @@
               County EMS.
             </p>
           </li>
+        </ul>
+      </section>
+
+      <section class="more" aria-labelledby="more-heading">
+        <h2 id="more-heading">More</h2>
+        <ul class="projects compact">
+          <li>
+            <div class="project-head">
+              <h3>spevents.live</h3>
+              <p class="project-links">
+                <a href="/projects/spevents.html">case study</a>
+                ·
+                <a href="https://www.spevents.live/" target="_blank" rel="noopener noreferrer">live</a>
+                ·
+                <a href="https://github.com/fbablu/spevents-frontend" target="_blank" rel="noopener noreferrer">code</a>
+              </p>
+            </div>
+            <p class="compact-desc">QR-code photo wall for live events.</p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>vabsvu</h3>
+              <p class="project-links">
+                <a href="https://vabsvu.github.io/" target="_blank" rel="noopener noreferrer">live</a>
+                ·
+                <a href="https://github.com/vabsvu/vabsvu.github.io" target="_blank" rel="noopener noreferrer">code</a>
+              </p>
+            </div>
+            <p class="compact-desc">
+              Site for Vanderbilt's Association of Bangladeshi Students.
+            </p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>HUSH-MESH</h3>
+              <p class="project-links">
+                <a href="https://github.com/fbablu/hush-mesh/" target="_blank" rel="noopener noreferrer">code</a>
+                ·
+                <a href="https://drive.google.com/file/d/1GIMq0oROrFASG00U4HrpfS6FhYHmrKbj/view" target="_blank" rel="noopener noreferrer">pitch</a>
+              </p>
+            </div>
+            <p class="compact-desc">
+              Simulated maritime drone swarm: YOLOv8, A* routing, MQTT mesh.
+            </p>
+            <p class="award">2nd Place ($15K), AWS Mission Autonomy</p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>OcclusionTrack</h3>
+              <p class="project-links">
+                <a href="https://github.com/usman-khan12/vision-model-ironsite-x-vandy-hackathon" target="_blank" rel="noopener noreferrer">code</a>
+                ·
+                <a href="https://docs.google.com/presentation/d/1ohvFnF6tULQ_vFGDLaKV6--he7dZ4CWQnwXMaSRhPIQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">pitch</a>
+              </p>
+            </div>
+            <p class="compact-desc">
+              Object permanence bolted onto a vision-language model.
+            </p>
+            <p class="award">3rd Place ($2.5K), Ironsite Spatial Hackathon</p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>Gemicast</h3>
+              <p class="project-links">
+                <a href="https://github.com/fbablu/gemicast" target="_blank" rel="noopener noreferrer">code</a>
+                ·
+                <a href="https://docs.google.com/presentation/d/1OpJ9mJ16NzwnT-PTWYOMYuWrQTtofdJ9/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener noreferrer">pitch</a>
+              </p>
+            </div>
+            <p class="compact-desc">Outage-risk ML for Tennessee counties.</p>
+            <p class="award">1st Place, Google Solutions Challenge</p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>NPForward</h3>
+              <p class="project-links">
+                <a href="https://drive.google.com/file/d/1izkAAKIDs_o7c44yIynNjDJG2l48cLDM/view" target="_blank" rel="noopener noreferrer">pitch</a>
+              </p>
+            </div>
+            <p class="compact-desc">AR collectibles for the U.S. National Parks.</p>
+            <p class="award">Top 5 Finalist, Accenture Innovation Challenge</p>
+          </li>
 
           <li>
             <div class="project-head">
@@ -183,11 +179,8 @@
                 <a href="https://github.com/Tobena-04/deep_learning_pong_project" target="_blank" rel="noopener noreferrer">code</a>
               </p>
             </div>
-            <p>
-              DQN and PPO agents built from scratch in PyTorch, learning to play
-              a Pong clone written in C++/SDL2. The game and the trainer talk to
-              each other over plain text files on disk. A deep-learning course
-              project.
+            <p class="compact-desc">
+              DQN and PPO agents vs a Pong clone built in C++/SDL2.
             </p>
           </li>
 
@@ -198,11 +191,8 @@
                 <a href="https://github.com/fbablu/cs3891-network-project" target="_blank" rel="noopener noreferrer">code</a>
               </p>
             </div>
-            <p>
-              A course project in NetworkX: a state-to-state similarity graph of
-              U.S. healthcare-provider density vs. hospital spending, with
-              centrality and Louvain community detection to surface the "bridge"
-              states.
+            <p class="compact-desc">
+              Healthcare-provider network analysis in NetworkX.
             </p>
           </li>
 
@@ -213,11 +203,7 @@
                 <a href="https://github.com/a-shrey/QuizLITE" target="_blank" rel="noopener noreferrer">code</a>
               </p>
             </div>
-            <p>
-              An offline flashcard desktop app in C++/Qt6 with SQLite. Three
-              study modes, plus adaptive review that resurfaces your weakest
-              cards by tracking per-card accuracy.
-            </p>
+            <p class="compact-desc">Offline flashcard desktop app in C++/Qt6.</p>
           </li>
 
           <li>
@@ -227,11 +213,8 @@
                 <a href="https://github.com/fbablu/CrossSpec" target="_blank" rel="noopener noreferrer">code</a>
               </p>
             </div>
-            <p>
-              Research into whether mixing human and mouse tissue images trains
-              better histopathology segmentation, using U-Net/DeepLab variants
-              with a custom cross-species loss on the NuInsSeg dataset. Work in
-              progress.
+            <p class="compact-desc">
+              Cross-species histopathology segmentation research.
             </p>
           </li>
         </ul>

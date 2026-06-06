@@ -50,7 +50,30 @@ h1 {
 }
 
 .intro {
+  margin: 0 0 0.75rem;
+  max-width: 34rem;
+}
+
+.currently {
   margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--muted);
+  max-width: 34rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.1rem;
+  border-radius: 50%;
+  background: #2ea043;
+  vertical-align: middle;
+}
+
+.back-link {
+  margin: 0 0 2rem;
+  font-size: 0.9375rem;
 }
 
 header nav {
@@ -64,12 +87,16 @@ hr {
 }
 
 h2 {
-  margin: 0 0 2rem;
+  margin: 0 0 1.75rem;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.more {
+  margin-top: 3rem;
 }
 
 .projects {
@@ -78,8 +105,17 @@ h2 {
   list-style: none;
 }
 
-.projects li + li {
+.projects.featured li + li {
   margin-top: 2.25rem;
+}
+
+.projects.compact li + li {
+  margin-top: 1.25rem;
+}
+
+.compact-desc {
+  font-size: 0.9375rem;
+  color: var(--muted);
 }
 
 .project-head {
