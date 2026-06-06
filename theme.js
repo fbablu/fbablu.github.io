@@ -50,7 +50,7 @@
     var a = Math.cos(p * 2 * Math.PI); // +1 near new, -1 near full
     var rx = Math.abs(a) * R;
     var limb = p <= 0.5 ? 1 : 0; // waxing lights the right limb
-    var term = a > 0 ? limb : 1 - limb;
+    var term = a > 0 ? 1 - limb : limb; // fill the lit fraction f, not its complement
     return (
       "M " + cx + " " + (cy - R) +
       " A " + R + " " + R + " 0 0 " + limb + " " + cx + " " + (cy + R) +

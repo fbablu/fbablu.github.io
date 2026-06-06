@@ -1,6 +1,19 @@
 /* Sun/moon-over-a-hill theme toggle. Shared by every page.
    The theme color variables live in style.css / projects/vectr.css / aic.css. */
 
+/* Soft fade when the theme flips. Bare * keeps specificity low so element
+   rules (the caption's opacity fade, the toggle's transform) win. */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    fill 0.45s ease,
+    stroke 0.45s ease;
+}
+
 main,
 .container {
   position: relative;
