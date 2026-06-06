@@ -1,0 +1,93 @@
+/* Sun/moon-over-a-hill theme toggle. Shared by every page.
+   The theme color variables live in style.css / projects/vectr.css. */
+
+.theme-toggle {
+  position: fixed;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 2.9rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  display: none; /* shown only when JS is available */
+}
+
+.js .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.theme-toggle svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* The orbit carries sun + moon along a clockwise arc; each body counter-rotates
+   so it stays upright while travelling. */
+.orbit {
+  transform-box: view-box;
+  transform-origin: 24px 30px;
+}
+.sun {
+  transform-box: view-box;
+  transform-origin: 24px 12px;
+}
+.moon {
+  transform-box: view-box;
+  transform-origin: 24px 48px;
+}
+
+.theme-toggle.anim .orbit,
+.theme-toggle.anim .sun,
+.theme-toggle.anim .moon {
+  transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1);
+}
+
+.sun circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.sun line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.hill {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.moon-disk {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  opacity: 0.25;
+}
+.moon-lit {
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle.anim .orbit,
+  .theme-toggle.anim .sun,
+  .theme-toggle.anim .moon {
+    transition: none;
+  }
+}
