@@ -97,17 +97,17 @@
         </p>
         <ul class="bullets">
           <li>
-            <strong>Scene Intel</strong> — satellite + street-level imagery,
-            crew notes per address, transport routing with hazard zones, golden
-            hour countdown, offline-first storage, and a landing-zone (LZ)
-            detection system that auto-scored 100×100 ft helicopter sites from
-            satellite imagery.
+            <strong>Scene Intel.</strong> Satellite + street-level imagery, crew
+            notes per address, transport routing with hazard zones, golden hour
+            countdown, offline-first storage, and a landing-zone (LZ) detection
+            system that auto-scored 100×100 ft helicopter sites from satellite
+            imagery.
           </li>
           <li>
-            <strong>AI Scribe</strong> — ambient voice capture on iOS that
+            <strong>AI Scribe.</strong> Ambient voice capture on iOS that
             converted patient encounters into structured NEMSIS ePCR fields,
             attacking the ~45 min/shift charting tax. All inference on-device
-            (~450 MB total) — Parakeet TDT for speech, LFM2-350M for structured
+            (~450 MB total): Parakeet TDT for speech, LFM2-350M for structured
             extraction. PHI never left the device.
           </li>
         </ul>
@@ -125,13 +125,13 @@
           conversation with <strong>Kitty-Jo Cox</strong>, a 3-year EMT in rural
           Tennessee. She walked through a typical night call: dead-end road, no
           streetlights, fog, no number on the house, truck wheels sinking in a
-          wet yard, every minute without compressions dropping survival 7–10%.
+          wet yard, every minute without compressions dropping survival 7-10%.
         </p>
         <p>
           She wasn't complaining about navigation. She was describing a
           visibility problem. EMTs respond to scenes they've never seen, in
-          conditions where their tools — a $100k CAD system, a 4 GB Surface Pro,
-          a personal phone — give them text and a fleet tracker.
+          conditions where their tools (a $100k CAD system, a 4 GB Surface Pro,
+          a personal phone) give them text and a fleet tracker.
         </p>
         <p>
           The weekend after the interview, my co-founder Usman and I built the
@@ -144,7 +144,7 @@
       <section class="content-section">
         <h2>Customer discovery: three days in Greene County</h2>
         <p class="dateline">
-          Feb 20–22, 2026 · 4 crew interviews · 1 full shift in MED6
+          Feb 20-22, 2026 · 4 crew interviews · 1 full shift in MED6
         </p>
         <p>
           Kitty-Jo drove us up to Greeneville. Over three days we ran four
@@ -155,14 +155,14 @@
           <blockquote>
             <p>"It's dark and there's no lights… no street lights."</p>
           </blockquote>
-          <figcaption>— Kitty-Jo, on rural night calls</figcaption>
+          <figcaption>Kitty-Jo, on rural night calls</figcaption>
         </figure>
 
         <figure class="quote">
           <blockquote>
-            <p>"Every minute without CPR, survival goes down 7–10%."</p>
+            <p>"Every minute without CPR, survival goes down 7-10%."</p>
           </blockquote>
-          <figcaption>— Kitty-Jo</figcaption>
+          <figcaption>Kitty-Jo</figcaption>
         </figure>
 
         <figure class="quote">
@@ -172,14 +172,14 @@
               house."
             </p>
           </blockquote>
-          <figcaption>— Kitty-Jo</figcaption>
+          <figcaption>Kitty-Jo</figcaption>
         </figure>
 
         <figure class="quote">
           <blockquote>
             <p>"One driveway goes to 3 houses… which house is it?"</p>
           </blockquote>
-          <figcaption>— Myron, Asst. Director</figcaption>
+          <figcaption>Myron, Asst. Director</figcaption>
         </figure>
 
         <h3>Hardware reality</h3>
@@ -198,7 +198,7 @@
               <td>MED6</td>
               <td>Surface Pro 4 (Win 10)</td>
               <td>4 GB</td>
-              <td>None — Google Maps on personal phones</td>
+              <td>None; Google Maps on personal phones</td>
             </tr>
             <tr>
               <td>MED2</td>
@@ -217,7 +217,7 @@
         <h3>The wedge: landing zones</h3>
         <p>
           Greene County has <strong>zero FAA-registered helipads</strong>. Every
-          helicopter call is an ad-hoc landing — a church parking lot, a school
+          helicopter call is an ad-hoc landing: a church parking lot, a school
           field, a Walmart. Crews spend critical minutes finding a flat 100×100
           ft area within a survivable radius of the patient.
         </p>
@@ -226,7 +226,7 @@
             >Myron flagged this. Kitty-Jo flagged this. Dispatch flagged it.
             Independently.</strong
           >
-          That was the wedge. Not navigation — landing zones.
+          That was the wedge. Not navigation. Landing zones.
         </p>
       </section>
 
@@ -255,20 +255,20 @@
 
         <h3>3. LZ as the painkiller</h3>
         <p>
-          Navigation is a vitamin — Google Maps + CAD already solve "where is
-          it" at 80%. Landing zones are a real, unsolved, expensive problem. We
-          built <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>,
-          fed it FAA NASR data, USGS 3DEP elevation, and Overture density
-          scoring, then trained a DINOv2-Small (22M parameter) satellite scorer
-          on DGX Spark — precomputing 21 candidate landing zones for a county
-          with zero FAA-registered helipads.
+          Navigation is a vitamin: Google Maps + CAD already solve "where is it"
+          at 80%. Landing zones are a real, unsolved, expensive problem. We built
+          <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>, fed it
+          FAA NASR data, USGS 3DEP elevation, and Overture density scoring, then
+          trained a DINOv2-Small (22M parameter) satellite scorer on DGX Spark,
+          precomputing 21 candidate landing zones for a county with zero
+          FAA-registered helipads.
         </p>
 
         <h3>4. On-device AI for the Scribe</h3>
         <p>
           Patient data is PHI. PHI in the cloud is a HIPAA + ESO compliance tax
           we couldn't afford as a pre-revenue startup. So the iOS AI Scribe runs
-          entirely on-device via Cactus — Parakeet TDT for streaming STT (4.65%
+          entirely on-device via Cactus: Parakeet TDT for streaming STT (4.65%
           WER), LFM2-350M for structured extraction, silero-VAD for speech
           detection. ~450 MB resident memory total, monitored under iOS memory
           pressure.
@@ -280,8 +280,8 @@
           <em>"It has to be seamless."</em> If a crew has to retype the dispatch
           address into Vectr, the product is dead on arrival. IdnMobile has no
           public API, so we built a clipboard-monitor workaround for the Surface
-          and a separate iOS strategy. This — not LZ scoring, not the scribe —
-          was the actual gating constraint on the pilot.
+          and a separate iOS strategy. This, not LZ scoring or the scribe, was
+          the actual gating constraint on the pilot.
         </p>
       </section>
 
@@ -322,14 +322,14 @@
           <li>Business Associate Agreement for patient data handling</li>
           <li>Cancel anytime with 30 days notice</li>
           <li>
-            Crews retain decision authority — Vectr is decision support, not
-            dispatch
+            Crews retain decision authority (Vectr is decision support, not
+            dispatch)
           </li>
         </ul>
         <p>
           Sent to Myron and his Director T.J. on March 6, 2026. Went to county
           legal the next week. Myron presented our one-pager at a regional
-          directors meeting on March 12 — a few directors scanned the QR code.
+          directors meeting on March 12; a few directors scanned the QR code.
         </p>
         <p>
           Then it stalled. County legal didn't come back. The directors didn't
@@ -405,16 +405,16 @@
       <section class="content-section credits">
         <h2>Credits</h2>
         <p>
-          <strong>Greene County / Greeneville EMS</strong> — Myron Hughes,
+          <strong>Greene County / Greeneville EMS.</strong> Myron Hughes,
           Kitty-Jo Cox, T.J. Manis, Micah, Jason, Kaylee, Andrew, Haley, Scott,
           Easton, and the crews of MED1, MED2, and MED6. Three days of field
           access and the most honest feedback I've ever received.
         </p>
         <p>
-          <strong>Vanderbilt University</strong> — Dr. Ole Molvig at the Wond'ry
+          <strong>Vanderbilt University.</strong> Dr. Ole Molvig at the Wond'ry
           Emerging Technology Lab, faculty advisor.
         </p>
-        <p><strong>Co-founder</strong> — Usman Khan (CEO).</p>
+        <p><strong>Co-founder.</strong> Usman Khan (CEO).</p>
       </section>
 
       <footer class="page-footer">
