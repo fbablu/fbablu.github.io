@@ -4,12 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fardeen bablu | vectr</title>
-    <meta name="description" content="Pre-arrival spatial intelligence for EMTs. Validated with Greene County EMS, Tennessee." />
+    <meta
+      name="description"
+      content="Pre-arrival spatial intelligence for EMTs. Validated with Greene County EMS, Tennessee."
+    />
     <link rel="stylesheet" href="vectr.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark")
+          root.setAttribute("data-theme", stored);
+        document.addEventListener("DOMContentLoaded", function () {
+          var btn = document.getElementById("theme-toggle");
+          if (!btn) return;
+          btn.addEventListener("click", function () {
+            var cur =
+              root.getAttribute("data-theme") ||
+              (window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light");
+            var next = cur === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+          });
+        });
+      })();
+    </script>
   </head>
   <body>
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Toggle light or dark theme"
+    >
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4a6.5 6.5 0 0 0 10.4 10.4z" /></svg>
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3" /></svg>
+    </button>
+
     <main class="container">
       <a href="/" class="back-link">&larr; back</a>
 
@@ -17,9 +52,9 @@
         <div class="hero-meta">case study · 2026</div>
         <h1>Vectr</h1>
         <p class="hero-sub">
-          Pre-arrival spatial intelligence for EMTs. Co-founded as Vectr
-          Systems Inc.; I led all engineering and field research. Validated
-          with Greene County EMS, Tennessee. Wound down May 2026.
+          Pre-arrival spatial intelligence for EMTs. Co-founded as Vectr Systems
+          Inc.; I led all engineering and field research. Validated with Greene
+          County EMS, Tennessee. Wound down May 2026.
         </p>
         <div class="hero-actions">
           <a
@@ -59,7 +94,15 @@
             class="embed-frame"
             src="https://www.youtube.com/embed/RIl4jYlfGCo"
             title="Vectr demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
             allowfullscreen
           ></iframe>
         </div>
@@ -83,8 +126,8 @@
             <strong>AI Scribe</strong> — ambient voice capture on iOS that
             converted patient encounters into structured NEMSIS ePCR fields,
             attacking the ~45 min/shift charting tax. All inference on-device
-            (~450 MB total) — Parakeet TDT for speech, LFM2-350M for
-            structured extraction. PHI never left the device.
+            (~450 MB total) — Parakeet TDT for speech, LFM2-350M for structured
+            extraction. PHI never left the device.
           </li>
         </ul>
         <p>
@@ -106,8 +149,8 @@
         <p>
           She wasn't complaining about navigation. She was describing a
           visibility problem. EMTs respond to scenes they've never seen, in
-          conditions where their tools — a $100k CAD system, a 4 GB Surface
-          Pro, a personal phone — give them text and a fleet tracker.
+          conditions where their tools — a $100k CAD system, a 4 GB Surface Pro,
+          a personal phone — give them text and a fleet tracker.
         </p>
         <p>
           The weekend after the interview, my co-founder Usman and I built the
@@ -119,7 +162,9 @@
 
       <section class="content-section">
         <h2>Customer discovery: three days in Greene County</h2>
-        <p class="dateline">Feb 20–22, 2026 · 4 crew interviews · 1 full shift in MED6</p>
+        <p class="dateline">
+          Feb 20–22, 2026 · 4 crew interviews · 1 full shift in MED6
+        </p>
         <p>
           Kitty-Jo drove us up to Greeneville. Over three days we ran four
           interviews and spent a shift in the truck. What we got:
@@ -141,7 +186,10 @@
 
         <figure class="quote">
           <blockquote>
-            <p>"I've had people call and they don't have addresses on their house."</p>
+            <p>
+              "I've had people call and they don't have addresses on their
+              house."
+            </p>
           </blockquote>
           <figcaption>— Kitty-Jo</figcaption>
         </figure>
@@ -154,9 +202,7 @@
         </figure>
 
         <h3>Hardware reality</h3>
-        <p>
-          What's actually in the truck:
-        </p>
+        <p>What's actually in the truck:</p>
         <table class="data-table">
           <thead>
             <tr>
@@ -182,20 +228,23 @@
           </tbody>
         </table>
         <p>
-          The map tab on tablet hardware that costs more than my rent is a
-          fleet tracker. No navigation, no routing. Every EMT I rode with used
-          Google Maps on a personal phone.
+          The map tab on tablet hardware that costs more than my rent is a fleet
+          tracker. No navigation, no routing. Every EMT I rode with used Google
+          Maps on a personal phone.
         </p>
 
         <h3>The wedge: landing zones</h3>
         <p>
-          Greene County has <strong>zero FAA-registered helipads</strong>.
-          Every helicopter call is an ad-hoc landing — a church parking lot, a
-          school field, a Walmart. Crews spend critical minutes finding a flat
-          100×100 ft area within a survivable radius of the patient.
+          Greene County has <strong>zero FAA-registered helipads</strong>. Every
+          helicopter call is an ad-hoc landing — a church parking lot, a school
+          field, a Walmart. Crews spend critical minutes finding a flat 100×100
+          ft area within a survivable radius of the patient.
         </p>
         <p>
-          <strong>Myron flagged this. Kitty-Jo flagged this. Dispatch flagged it. Independently.</strong>
+          <strong
+            >Myron flagged this. Kitty-Jo flagged this. Dispatch flagged it.
+            Independently.</strong
+          >
           That was the wedge. Not navigation — landing zones.
         </p>
       </section>
@@ -207,10 +256,10 @@
         <h3>1. Phone-first, not tablet-first</h3>
         <p>
           Original plan: Tauri desktop client on the truck's Surface. Reality:
-          that Surface has 4 GB of RAM, can't run Vectr next to IdnMobile
-          (CAD), and crews already don't trust the map tab. Pivot: native iOS
-          with CarPlay support as the primary surface; the Tauri client became
-          a fallback for dispatch desks and outer-zone trucks with phone dead
+          that Surface has 4 GB of RAM, can't run Vectr next to IdnMobile (CAD),
+          and crews already don't trust the map tab. Pivot: native iOS with
+          CarPlay support as the primary surface; the Tauri client became a
+          fallback for dispatch desks and outer-zone trucks with phone dead
           spots.
         </p>
 
@@ -219,39 +268,39 @@
           Rural East Tennessee has cell dead zones, specifically the area near
           the NC line. Hospitals are an hour away. If the network is a hard
           dependency, the product breaks on the calls that matter most. So:
-          local-first cache, syncing when online, with map tiles + crew notes
-          + LZ candidates packaged per county.
+          local-first cache, syncing when online, with map tiles + crew notes +
+          LZ candidates packaged per county.
         </p>
 
         <h3>3. LZ as the painkiller</h3>
         <p>
           Navigation is a vitamin — Google Maps + CAD already solve "where is
-          it" at 80%. Landing zones are a real, unsolved, expensive problem.
-          We built <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>,
+          it" at 80%. Landing zones are a real, unsolved, expensive problem. We
+          built <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>,
           fed it FAA NASR data, USGS 3DEP elevation, and Overture density
-          scoring, then trained a DINOv2-Small (22M parameter) satellite
-          scorer on DGX Spark — precomputing 21 candidate landing zones for a
-          county with zero FAA-registered helipads.
+          scoring, then trained a DINOv2-Small (22M parameter) satellite scorer
+          on DGX Spark — precomputing 21 candidate landing zones for a county
+          with zero FAA-registered helipads.
         </p>
 
         <h3>4. On-device AI for the Scribe</h3>
         <p>
-          Patient data is PHI. PHI in the cloud is a HIPAA + ESO compliance
-          tax we couldn't afford as a pre-revenue startup. So the iOS AI
-          Scribe runs entirely on-device via Cactus — Parakeet TDT for
-          streaming STT (4.65% WER), LFM2-350M for structured extraction,
-          silero-VAD for speech detection. ~450 MB resident memory total,
-          monitored under iOS memory pressure.
+          Patient data is PHI. PHI in the cloud is a HIPAA + ESO compliance tax
+          we couldn't afford as a pre-revenue startup. So the iOS AI Scribe runs
+          entirely on-device via Cactus — Parakeet TDT for streaming STT (4.65%
+          WER), LFM2-350M for structured extraction, silero-VAD for speech
+          detection. ~450 MB resident memory total, monitored under iOS memory
+          pressure.
         </p>
 
         <h3>5. CAD address auto-flow as table stakes</h3>
         <p>
-          Director T.J. said it on the second call: <em>"It has to be
-          seamless."</em> If a crew has to retype the dispatch address into
-          Vectr, the product is dead on arrival. IdnMobile has no public API,
-          so we built a clipboard-monitor workaround for the Surface and a
-          separate iOS strategy. This — not LZ scoring, not the scribe — was
-          the actual gating constraint on the pilot.
+          Director T.J. said it on the second call:
+          <em>"It has to be seamless."</em> If a crew has to retype the dispatch
+          address into Vectr, the product is dead on arrival. IdnMobile has no
+          public API, so we built a clipboard-monitor workaround for the Surface
+          and a separate iOS strategy. This — not LZ scoring, not the scribe —
+          was the actual gating constraint on the pilot.
         </p>
       </section>
 
@@ -259,8 +308,8 @@
         <h2>Design choices</h2>
         <ul class="bullets">
           <li>
-            <strong>Dark theme everywhere.</strong> Crews work nights. White
-            UI in a dark cab destroys night vision.
+            <strong>Dark theme everywhere.</strong> Crews work nights. White UI
+            in a dark cab destroys night vision.
           </li>
           <li>
             <strong>24-hour time.</strong> Military convention; what every EMS
@@ -272,8 +321,8 @@
           </li>
           <li>
             <strong>One-handed operation.</strong> Buttons sized for gloved
-            hands. Critical actions reachable with a thumb on a phone mounted
-            to the dash.
+            hands. Critical actions reachable with a thumb on a phone mounted to
+            the dash.
           </li>
           <li>
             <strong>"R&D preview" labels on AI scores.</strong> LZ quality
@@ -291,7 +340,10 @@
           <li>Free 6-month trial on units MED1 and MED6</li>
           <li>Business Associate Agreement for patient data handling</li>
           <li>Cancel anytime with 30 days notice</li>
-          <li>Crews retain decision authority — Vectr is decision support, not dispatch</li>
+          <li>
+            Crews retain decision authority — Vectr is decision support, not
+            dispatch
+          </li>
         </ul>
         <p>
           Sent to Myron and his Director T.J. on March 6, 2026. Went to county
@@ -318,8 +370,7 @@
           <li>
             The competitor space (RapidSOS, FirstNet, Prepared, Carbyne) is
             well-capitalized and full-time; the only honest path forward
-            part-time was cold-emailing rural EMS departments without
-            conviction
+            part-time was cold-emailing rural EMS departments without conviction
           </li>
         </ul>
         <p>
@@ -339,30 +390,33 @@
           <li>
             <strong>Move on dispatch integration first.</strong> Every other
             product decision was downstream of "can we get the address
-            automatically?" We treated it as a future problem. It was the
-            first problem.
+            automatically?" We treated it as a future problem. It was the first
+            problem.
           </li>
           <li>
-            <strong>Run the entity decision in parallel with the pilot, not
-            after.</strong> A 50/50 split with a co-founder who doesn't share
-            your conviction is a slow leak.
+            <strong
+              >Run the entity decision in parallel with the pilot, not
+              after.</strong
+            >
+            A 50/50 split with a co-founder who doesn't share your conviction is
+            a slow leak.
           </li>
           <li>
             <strong>Don't treat the field partner as a "case study."</strong>
-            Treat them as the only thing that matters. Show up more than
-            three days. Eat the dinner. Call between visits.
+            Treat them as the only thing that matters. Show up more than three
+            days. Eat the dinner. Call between visits.
           </li>
           <li>
-            <strong>Sell the painkiller, not the vision.</strong> The
-            whitepaper pitches Scene Intel + AI Scribe as a system. Greene
-            County wanted <em>the LZ tool that works on the helicopter
-            calls</em>. Should have led with one feature, not five.
+            <strong>Sell the painkiller, not the vision.</strong> The whitepaper
+            pitches Scene Intel + AI Scribe as a system. Greene County wanted
+            <em>the LZ tool that works on the helicopter calls</em>. Should have
+            led with one feature, not five.
           </li>
           <li>
             <strong>Closure is a feature.</strong> Closing well let me sleep,
-            kept the relationships intact, and made the work portable into
-            this case study. Not every project ships. Every project should end
-            on purpose.
+            kept the relationships intact, and made the work portable into this
+            case study. Not every project ships. Every project should end on
+            purpose.
           </li>
         </ol>
       </section>
@@ -371,23 +425,19 @@
         <h2>Credits</h2>
         <p>
           <strong>Greene County / Greeneville EMS</strong> — Myron Hughes,
-          Kitty-Jo Cox, T.J. Manis, Micah, Jason, Kaylee, Andrew, Haley,
-          Scott, Easton, and the crews of MED1, MED2, and MED6. Three days of
-          field access and the most honest feedback I've ever received.
+          Kitty-Jo Cox, T.J. Manis, Micah, Jason, Kaylee, Andrew, Haley, Scott,
+          Easton, and the crews of MED1, MED2, and MED6. Three days of field
+          access and the most honest feedback I've ever received.
         </p>
         <p>
-          <strong>Vanderbilt University</strong> — Dr. Ole Molvig at the
-          Wond'ry Emerging Technology Lab, faculty advisor.
+          <strong>Vanderbilt University</strong> — Dr. Ole Molvig at the Wond'ry
+          Emerging Technology Lab, faculty advisor.
         </p>
-        <p>
-          <strong>Co-founder</strong> — Usman Khan (CEO).
-        </p>
+        <p><strong>Co-founder</strong> — Usman Khan (CEO).</p>
       </section>
 
       <footer class="page-footer">
-        <p>
-          Built 2026 · Wound down May 2026 · Documented for the next thing.
-        </p>
+        <p>Built 2026 · Wound down May 2026 · Documented for the next thing.</p>
       </footer>
     </main>
   </body>

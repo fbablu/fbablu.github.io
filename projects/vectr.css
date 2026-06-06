@@ -1,4 +1,4 @@
-/* Shared minimal stylesheet for case-study pages — matches the index aesthetic.
+/* Shared minimal stylesheet for case-study pages. Matches the index aesthetic.
    Auto light/dark, system fonts, no animation. */
 
 :root {
@@ -22,15 +22,92 @@
   }
 }
 
+/* Explicit overrides from the toggle (beat the media query by specificity). */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5f5f5f;
+  --rule: #e2e2e2;
+  --accent: #0b62c4;
+  --code-bg: #f3f3f3;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --text: #e8e8e8;
+  --muted: #a0a0a0;
+  --rule: #2e2e2e;
+  --accent: #8ab8f0;
+  --code-bg: #1f1f1f;
+}
+
 * {
   box-sizing: border-box;
+}
+
+/* Theme toggle (SF-style sun/moon, minimal). */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.icon-sun {
+  display: none;
+}
+
+.icon-moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon-moon {
+    display: none;
+  }
+  .icon-sun {
+    display: block;
+  }
+}
+
+:root[data-theme="light"] .icon-moon {
+  display: block;
+}
+:root[data-theme="light"] .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+:root[data-theme="dark"] .icon-sun {
+  display: block;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.65;
   overflow-wrap: break-word;
