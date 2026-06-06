@@ -1,4 +1,45 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya&family=Josefin+Sans&family=IBM+Plex+Mono:ital@1&family=Aboreto&family=Ubuntu+Condensed&family=Akronim&family=Bungee+Inline&display=swap");
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5f5f5f;
+  --rule: #e2e2e2;
+  --accent: #0b62c4;
+  --surface: #f5f5f5;
+  --surface-2: #e9ecef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #e8e8e8;
+    --muted: #a0a0a0;
+    --rule: #2e2e2e;
+    --accent: #8ab8f0;
+    --surface: #1f1f1f;
+    --surface-2: #2a2a2a;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5f5f5f;
+  --rule: #e2e2e2;
+  --accent: #0b62c4;
+  --surface: #f5f5f5;
+  --surface-2: #e9ecef;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --text: #e8e8e8;
+  --muted: #a0a0a0;
+  --rule: #2e2e2e;
+  --accent: #8ab8f0;
+  --surface: #1f1f1f;
+  --surface-2: #2a2a2a;
+}
 
 * {
   margin: 0;
@@ -9,10 +50,10 @@
 body {
   min-height: 100vh;
   padding: 2rem 1rem;
-  background-color: #ffffff;
+  background-color: var(--bg);
   font-family: Times, serif;
   line-height: 1.6;
-  color: #000;
+  color: var(--text);
 }
 
 .container {
@@ -25,14 +66,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #666;
+  color: var(--muted);
   text-decoration: none;
   margin-bottom: 2rem;
   transition: color 0.2s;
 }
 
 .back-link:hover {
-  color: #000;
+  color: var(--text);
 }
 
 h1 {
@@ -55,7 +96,7 @@ h2 {
 
 .embed-container {
   margin: 2rem 0;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--rule);
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -66,19 +107,19 @@ h2 {
 .embed-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px dashed #dee2e6;
+  border: 2px dashed var(--rule);
 }
 
 .embed-placeholder:hover {
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-  border-color: #adb5bd;
+  background: var(--surface-2);
+  border-color: var(--muted);
 }
 
 .placeholder-icon {
@@ -90,12 +131,12 @@ h2 {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #495057;
+  color: var(--text);
 }
 
 .placeholder-subtext {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--muted);
   text-align: center;
   max-width: 300px;
 }
@@ -126,8 +167,8 @@ h2 {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #007bff;
+  border: 4px solid var(--rule);
+  border-top: 4px solid var(--accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -153,8 +194,8 @@ h2 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: #f5f5f5;
-  color: #000;
+  background-color: var(--surface);
+  color: var(--text);
   text-decoration: none;
   border-radius: 6px;
   transition: background-color 0.2s;
@@ -162,7 +203,7 @@ h2 {
 }
 
 .external-link:hover {
-  background-color: #e5e5e5;
+  background-color: var(--surface-2);
 }
 
 @media (max-width: 768px) {
