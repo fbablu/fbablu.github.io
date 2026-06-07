@@ -256,11 +256,12 @@
         <h3>3. LZ as the painkiller</h3>
         <p>
           Navigation is a vitamin: Google Maps + CAD already solve "where is it"
-          at 80%. Landing zones are a real, unsolved, expensive problem. We built
-          <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>, fed it
-          FAA NASR data, USGS 3DEP elevation, and Overture density scoring, then
-          trained a DINOv2-Small (22M parameter) satellite scorer on DGX Spark,
-          precomputing 21 candidate landing zones for a county with zero
+          at 80%. Landing zones are a real, unsolved, expensive problem. We
+          built
+          <code>lzDetection.ts</code> + <code>LZFinderPanel.svelte</code>, fed
+          it FAA NASR data, USGS 3DEP elevation, and Overture density scoring,
+          then trained a DINOv2-Small (22M parameter) satellite scorer on DGX
+          Spark, precomputing 21 candidate landing zones for a county with zero
           FAA-registered helipads.
         </p>
 
