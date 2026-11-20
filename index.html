@@ -6,7 +6,7 @@
     <title>fardeen bablu</title>
     <meta
       name="description"
-      content="Fardeen Bablu. I build iOS and full-stack products as a founding engineer."
+      content="Fardeen Bablu. Research engineer at the Vanderbilt Institute of National Security. I build measurement systems and field software in Go, Rust, and Python."
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -20,14 +20,15 @@
         <div class="header-text">
           <h1>Fardeen Bablu</h1>
           <p class="intro">
-            I build iOS and full-stack products as a founding engineer.
+            I build measurement systems and field software in Go, Rust, and
+            Python.
           </p>
-          <p>Vanderbilt B.S. in CS + Math + Public Health.</p>
+          <p>Vanderbilt B.S. in CS + Math + Public Health. U.S. citizen, clearance-eligible.</p>
           <p class="currently">
             <span class="dot" aria-hidden="true"></span>
             <span
-              >Building Niyah and doing research at the Vanderbilt Institute of
-              National Security</span
+              >Research engineer at the Vanderbilt Institute of National
+              Security (Wicked Problems Lab)</span
             >
           </p>
           <nav class="links" aria-label="Links">
@@ -132,33 +133,15 @@
         <ul class="projects featured">
           <li>
             <div class="project-head">
-              <h3>Niyah</h3>
-              <p class="project-links">
-                <a
-                  href="https://niyah.live"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >live</a
-                >
-              </p>
+              <h3>Post-quantum TLS measurement</h3>
             </div>
             <p>
-              A focus app where you stake your own money on a session: finish it
-              and you keep the money, quit early and you forfeit it. Built in
-              Swift with Screen Time extensions, Apple Pay, Stripe, and Plaid,
-              plus Apple's FamilyControls Distribution entitlement.
-            </p>
-          </li>
-
-          <li>
-            <div class="project-head">
-              <h3>Sentinel</h3>
-            </div>
-            <p>
-              LLM refusal-decay research at Vanderbilt's Institute of National
-              Security (Wicked Problems Lab). 300
-              HarmBench/AdvBench/JailbreakBench probes per model against
-              Claude, DeepSeek-R1, and closed LLMs.
+              Work I led at Vanderbilt's Institute of National Security: a
+              census of post-quantum TLS across 33,069 government, university,
+              and financial domains, plus a 1M-site extension. A Go prober and
+              a statistics layer (Wilson intervals, Manski bounds) found 3,834
+              domains whose homepage uses ML-KEM while their login, checkout, or
+              API path is still classical-only.
             </p>
           </li>
 
@@ -176,13 +159,6 @@
                 >
                 ·
                 <a
-                  href="https://drive.google.com/file/d/1ZsZuyx8sSqQYbHGGvmwQ09siQgBxAiKN/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >whitepaper</a
-                >
-                ·
-                <a
                   href="https://www.figma.com/design/t3eZT3k53f7x71oeaF5yGC/vectr?node-id=0-1&amp;t=pqYJJneRoVuDgQrI-1"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -192,8 +168,48 @@
             </div>
             <p>
               Pre-arrival spatial intelligence for EMTs: scene intel, routing,
-              and helicopter landing-zone scoring. Field-validated with Greene
-              County EMS.
+              and helicopter landing-zone scoring. Rust and PostGIS backend,
+              field-tested on a 3-day ride-along with Greene County EMS.
+            </p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>HUSH-MESH</h3>
+              <p class="project-links">
+                <a
+                  href="https://github.com/fbablu/hush-mesh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >code</a
+                >
+                ·
+                <a
+                  href="https://drive.google.com/file/d/1GIMq0oROrFASG00U4HrpfS6FhYHmrKbj/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >pitch</a
+                >
+              </p>
+            </div>
+            <p>
+              Convoy-protection simulation: an A* mission planner over MQTT
+              edge agents, with a React view of the convoy, drones, and
+              threats. Rewritten after the hackathon to fix a cross-thread bug
+              that dropped every planner recommendation.
+            </p>
+            <p class="award">2nd Place ($15K), Amazon Mission Autonomy Hackathon</p>
+          </li>
+
+          <li>
+            <div class="project-head">
+              <h3>Sentinel</h3>
+            </div>
+            <p>
+              LLM safety study at the Institute, where I built the probe
+              pipeline: 4,472 harmful-request
+              probes across 5 models behind 0 to 90% many-shot padding, with
+              Wilson intervals per cell. Refusal fell by up to 22.7 points.
             </p>
           </li>
         </ul>
@@ -202,6 +218,25 @@
       <section class="more" aria-labelledby="more-heading">
         <h2 id="more-heading">More</h2>
         <ul class="projects compact">
+          <li>
+            <div class="project-head">
+              <h3>Niyah</h3>
+              <p class="project-links">
+                <a
+                  href="https://niyah.live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >live</a
+                >
+              </p>
+            </div>
+            <p class="compact-desc">
+              iOS focus app where you stake money on a session. Swift Screen
+              Time extensions under Apple's FamilyControls entitlement, Stripe,
+              and Plaid.
+            </p>
+          </li>
+
           <li>
             <div class="project-head">
               <h3>spevents.live</h3>
@@ -252,31 +287,6 @@
 
           <li>
             <div class="project-head">
-              <h3>HUSH-MESH</h3>
-              <p class="project-links">
-                <a
-                  href="https://github.com/fbablu/hush-mesh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >code</a
-                >
-                ·
-                <a
-                  href="https://drive.google.com/file/d/1GIMq0oROrFASG00U4HrpfS6FhYHmrKbj/view"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >pitch</a
-                >
-              </p>
-            </div>
-            <p class="compact-desc">
-              Simulated maritime drone swarm: YOLOv8, A* routing, MQTT mesh.
-            </p>
-            <p class="award">2nd Place ($15K), AWS Mission Autonomy</p>
-          </li>
-
-          <li>
-            <div class="project-head">
               <h3>OcclusionTrack</h3>
               <p class="project-links">
                 <a
@@ -295,7 +305,8 @@
               </p>
             </div>
             <p class="compact-desc">
-              Object permanence bolted onto a vision-language model.
+              Object permanence for construction-site video. I led the idea
+              and pitch.
             </p>
             <p class="award">3rd Place ($2.5K), Ironsite Spatial Hackathon</p>
           </li>
@@ -305,13 +316,6 @@
               <h3>Gemicast</h3>
               <p class="project-links">
                 <a
-                  href="https://github.com/fbablu/gemicast"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >code</a
-                >
-                ·
-                <a
                   href="https://docs.google.com/presentation/d/1OpJ9mJ16NzwnT-PTWYOMYuWrQTtofdJ9/edit?slide=id.p1#slide=id.p1"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -320,7 +324,7 @@
               </p>
             </div>
             <p class="compact-desc">Outage-risk ML for Tennessee counties.</p>
-            <p class="award">1st Place, Google Solutions Challenge</p>
+            <p class="award">Demo Day, Google Solutions Challenge</p>
           </li>
 
           <li>
